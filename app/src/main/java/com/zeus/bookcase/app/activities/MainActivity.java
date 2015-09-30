@@ -1,9 +1,11 @@
-package com.zeus.bookcase;
+package com.zeus.bookcase.app.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.zeus.bookcase.R;
 
 public class MainActivity extends ActionBarActivity {
 

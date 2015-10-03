@@ -52,7 +52,6 @@ public class RetrofitActivity extends Activity {
                     @Override
                     public void success(GitModel gitmodel, Response response) {
                         // we get json object from github server to our POJO or model class
-                        Log.d("lvzimou","测试");
                         tv.setText("Github Name :" + gitmodel.getLogin());
 
                         bar.setVisibility(View.INVISIBLE); // disable progressbar

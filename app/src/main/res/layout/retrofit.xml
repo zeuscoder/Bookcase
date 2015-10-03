@@ -3,16 +3,27 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/first"
+    <EditText
+        android:id="@+id/et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="First"/>
+        android:text="12"/>
 
     <Button
-        android:id="@+id/test_retrofit"
+        android:id="@+id/retro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TestRetrofit"/>
+        android:text="retrofit" />
+
+    <TextView
+        android:id="@+id/retro_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       />
+
+    <ProgressBar
+        android:id="@+id/pb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

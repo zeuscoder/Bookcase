@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zeus.bookcase" >
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".app.AppMain"
         android:allowBackup="true"
@@ -18,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".app.event.FirstActivity"/>
+        <activity android:name=".app.activities.RetrofitActivity"/>
     </application>
 
 </manifest>

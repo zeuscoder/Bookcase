@@ -23,6 +23,7 @@ import de.greenrobot.event.EventBus;
 public class MainActivity extends ActionBarActivity {
 
     private Button btn;
+    private Button btn_slide;
     private TextView tv;
 
     @Override
@@ -35,12 +36,21 @@ public class MainActivity extends ActionBarActivity {
         EventBus.getDefault().register(this);
 
         btn = (Button) findViewById(R.id.main);
+        btn_slide = (Button) findViewById(R.id.btn_slide);
         tv = (TextView) findViewById(R.id.tv);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, FirstActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_slide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SlideViewActivity.class);
                 startActivity(intent);
             }
         });

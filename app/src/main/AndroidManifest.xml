@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".app.event.FirstActivity"/>
         <activity android:name=".app.activities.RetrofitActivity"/>
+        <activity android:name=".app.activities.SlideViewActivity"/>
     </application>
 
 </manifest>

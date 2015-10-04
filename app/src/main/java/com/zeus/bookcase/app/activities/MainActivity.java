@@ -12,8 +12,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zeus.bookcase.R;
+import com.zeus.bookcase.app.bean.Kettle;
 import com.zeus.bookcase.app.event.FirstActivity;
 import com.zeus.bookcase.app.event.FirstEvent;
+import com.zeus.bookcase.app.util.AppComponent;
+import com.zeus.bookcase.app.util.DaggerAppComponent;
 
 import de.greenrobot.event.EventBus;
 
@@ -27,6 +30,8 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        skeleton();
+
         EventBus.getDefault().register(this);
 
         btn = (Button) findViewById(R.id.main);
@@ -39,6 +44,14 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void skeleton() {
+        AppComponent component = DaggerAppComponent.builder().build();
+        Kettle kettle = component.providesKettle();
+        kettle.on();
+        kettle.brew();
+        kettle.off();
     }
 
     public void onEventMainThread(FirstEvent event) {

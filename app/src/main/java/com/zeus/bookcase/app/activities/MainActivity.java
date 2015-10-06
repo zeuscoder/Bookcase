@@ -24,6 +24,7 @@ public class MainActivity extends ActionBarActivity {
 
     private Button btn;
     private Button btn_slide;
+    private Button btn_pull;
     private TextView tv;
 
     @Override
@@ -37,6 +38,7 @@ public class MainActivity extends ActionBarActivity {
 
         btn = (Button) findViewById(R.id.main);
         btn_slide = (Button) findViewById(R.id.btn_slide);
+        btn_pull = (Button) findViewById(R.id.btn_pull);
         tv = (TextView) findViewById(R.id.tv);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +53,14 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SlideViewActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_pull.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PullRefreshActivity.class);
                 startActivity(intent);
             }
         });

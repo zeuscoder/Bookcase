@@ -27,7 +27,7 @@ public class PullRefreshActivity extends Activity {
                     public void run() {
                         mPullToRefreshView.setRefreshing(false);
                     }
-                }, 5000);
+                }, 3000);
             }
         });
     }

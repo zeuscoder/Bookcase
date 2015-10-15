@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="common__custom_dialog_btn_bg_normal">#00000000</color>
+    <color name="common__custom_dialog_btn_bg_pressed">#bfbfbf</color>
+
+    <color name="common__dialog_button_bar_button_text">#ff6e6f</color>
+    <color name="common__dialog_button_bar_button_text_positive">#ff2922</color>
+</resources>

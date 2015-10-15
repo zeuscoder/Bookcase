@@ -2,6 +2,7 @@ package com.zeus.bookcase.app.activities;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 
 import com.zeus.bookcase.R;
+import com.zeus.common.app.CommonDialogs;
 import com.zeus.skeleton.app.AppNavigator;
 import com.zeus.skeleton.app.BaseActivity;
 
@@ -79,17 +81,49 @@ public class WelcomeActivity extends BaseActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-
+                animFinished = true;
+                if(Build.VERSION.SDK_INT < 14) {
+                    openingDialog = CommonDialogs.simpleDialogBuilder(WelcomeActivity.this)
+                            .setTitle("提示")
+                            .setMessage("您的手机系统版本过低，请在Android4.0或以上版本使用")
+                            .setPositiveButton("退出程序", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    WelcomeActivity.this.finish();
+                                }
+                            })
+                            .show();
+                    openingDialog.setCanceledOnTouchOutside(false);
+                    openingDialog.setCancelable(false);
+                } else {
+                    checkGPS();
+                }
             }
 
             @Override
             public void onAnimationRepeat(Animation animation) {
-                animFinished = true;
-                if(Build.VERSION.SDK_INT < 14) {
-                    /*openingDialog = Common*/
-                }
+
             }
         });
+        imageView.setAnimation(animation);
+        //检测登录代码
+    }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
+
+    /**
+     * j检测GPS是否打开
+     */
+    private void checkGPS() {
+        goToMainActivity();
+    }
+
+    public void goToMainActivity() {
+        Intent intent = new Intent(WelcomeActivity.this,MainActivity.class);
+        startActivity(intent);
     }
 }

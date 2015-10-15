@@ -12,10 +12,11 @@ import android.widget.Toast;
 import com.zeus.bookcase.R;
 import com.zeus.bookcase.app.event.FirstActivity;
 import com.zeus.bookcase.app.event.FirstEvent;
+import com.zeus.skeleton.app.BaseActivity;
 
 import de.greenrobot.event.EventBus;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends BaseActivity {
 
     private Button btn;
     private Button btn_slide;

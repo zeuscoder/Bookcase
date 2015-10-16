@@ -116,13 +116,14 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     /**
-     * j检测GPS是否打开
+     * 检测GPS是否打开
      */
     private void checkGPS() {
         goToMainActivity();
     }
 
     public void goToMainActivity() {
+        this.finish();
         Intent intent = new Intent(WelcomeActivity.this,MainActivity.class);
         startActivity(intent);
     }

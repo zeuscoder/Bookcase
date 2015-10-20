@@ -45,4 +45,6 @@ dependencies {
 
     compile 'com.yalantis:phoenix:1.2.2'
     compile 'com.jakewharton.timber:timber:2.7.1'
+
+    compile 'com.umeng.analytics:analytics:latest.integration'
 }

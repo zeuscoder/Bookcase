@@ -126,5 +126,6 @@ public class WelcomeActivity extends BaseActivity {
         this.finish();
         Intent intent = new Intent(WelcomeActivity.this,MainActivity.class);
         startActivity(intent);
+/*        startActivity(IntroActivity.actionView(this, null));*/
     }
 }

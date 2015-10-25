@@ -1,5 +1,6 @@
 package com.zeus.bookcase.app.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -18,10 +19,27 @@ import de.greenrobot.event.EventBus;
 
 public class MainActivity extends BaseActivity {
 
+    private static final String EXTRA_QUIT = "quit";
+
+    private static final String EXTRA_SUB_INTENT = "sub_intent";
+
     private Button btn;
     private Button btn_slide;
     private Button btn_pull;
     private TextView tv;
+
+    public static Intent actionView(Context context) {
+        return new Intent(context, MainActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    }
+
+    public static Intent actionView(Context context, Intent subIntent) {
+        Intent intent = actionView(context);
+        if (subIntent != null) {
+            intent.putExtra(EXTRA_SUB_INTENT, subIntent);
+        }
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

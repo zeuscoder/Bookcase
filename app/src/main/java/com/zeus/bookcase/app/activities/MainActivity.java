@@ -14,6 +14,7 @@ import com.zeus.bookcase.R;
 import com.zeus.bookcase.app.event.FirstActivity;
 import com.zeus.bookcase.app.event.FirstEvent;
 import com.zeus.skeleton.app.BaseActivity;
+import com.zeus.ui_user.activity.BookListActivity;
 
 import de.greenrobot.event.EventBus;
 
@@ -26,6 +27,7 @@ public class MainActivity extends BaseActivity {
     private Button btn;
     private Button btn_slide;
     private Button btn_pull;
+    private Button btn_book;
     private TextView tv;
 
     public static Intent actionView(Context context) {
@@ -53,6 +55,7 @@ public class MainActivity extends BaseActivity {
         btn = (Button) findViewById(R.id.main);
         btn_slide = (Button) findViewById(R.id.btn_slide);
         btn_pull = (Button) findViewById(R.id.btn_pull);
+        btn_book = (Button) findViewById(R.id.btn_book);
         tv = (TextView) findViewById(R.id.tv);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +78,14 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, PullRefreshActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_book.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BookListActivity.class);
                 startActivity(intent);
             }
         });

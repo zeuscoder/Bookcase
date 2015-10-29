@@ -42,9 +42,8 @@ dependencies {
     provided 'org.glassfish:javax.annotation:10.0-b28'
     compile project(':skeleton')
     compile files('libs/universal-image-loader-1.9.4.jar')
-
     compile 'com.yalantis:phoenix:1.2.2'
     compile 'com.jakewharton.timber:timber:2.7.1'
-
     compile 'com.umeng.analytics:analytics:latest.integration'
+    compile project(':ui-user')
 }

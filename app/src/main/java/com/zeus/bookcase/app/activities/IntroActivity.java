@@ -35,9 +35,9 @@ public class IntroActivity extends BaseActivity{
     private static final String EXTRA_NEXT_ACTIVITY_INTENT = "app:next-activity-intent";
 
     int[] imgIds = {
-            R.mipmap.app__intro_01,
-            R.mipmap.app__intro_02,
-            R.mipmap.app__intro_03
+            R.drawable.app__intro_01,
+            R.drawable.app__intro_02,
+            R.drawable.app__intro_03
     };
 
     private ViewPager vp;
@@ -78,7 +78,7 @@ public class IntroActivity extends BaseActivity{
             views.add(view);
         }
         //初始化Adapter
-        MyPagerAdapter adapter = new MyPagerAdapter();
+        MyPagerAdapter adapter = new MyPagerAdapter(views);
         vp = (ViewPager) findViewById(R.id.viewPager);
         vp.setAdapter(adapter);
         // 绑定回调
@@ -105,6 +105,12 @@ public class IntroActivity extends BaseActivity{
      */
     class MyPagerAdapter extends PagerAdapter {
 
+        private List<View> views;
+
+        public MyPagerAdapter(List<View> views) {
+            this.views = views;
+        }
+
         @Override
         public void destroyItem(View arg0, int arg1, Object object) {
             ((ViewPager) arg0).removeView(views.get(arg1));
@@ -112,7 +118,12 @@ public class IntroActivity extends BaseActivity{
 
         @Override
         public int getCount() {
-            return views.size();
+            if (views != null)
+            {
+                return views.size();
+            }
+
+            return 0;
         }
 
         @Override
@@ -123,7 +134,7 @@ public class IntroActivity extends BaseActivity{
 
         @Override
         public boolean isViewFromObject(View view, Object object) {
-            return view == (object);
+            return (view == object);
         }
 
         @Override

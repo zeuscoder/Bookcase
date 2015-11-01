@@ -2,4 +2,18 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- 字体大小又有 6种 36 32 30   28   24   20 单位是30px 下面已经转为sp -->
+    <dimen name="user__text_size_fourty_four">20sp</dimen>
+    <!-- 44px -->
+    <dimen name="user__text_size_thirty_six">16sp</dimen>
+    <!-- 36px -->
+    <dimen name="user__text_size_thirty_one">14sp</dimen>
+    <!-- 32px -->
+    <dimen name="user__text_size_thirty">13sp</dimen>
+    <!-- 30px -->
+    <dimen name="user__text_size_twenty_eight">12sp</dimen>
+
+    <dimen name="user__text_account_padding">14sp</dimen>
+    <!-- 32px -->
 </resources>

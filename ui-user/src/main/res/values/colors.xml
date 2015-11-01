@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 布局背景色只有两种 白色和 灰色 -->
+    <color name="user__layout_bg_gray">#f3f3f3</color>
+    <color name="user__layout_bg_white">#ffffff</color>
+
+    <!-- Topbar按钮颜色 -->
+    <color name="user__layout_bg_press">#AAe1e1e1</color>
+    <color name="user__layout_transparent">#00000000</color>
+
+    <!--标题 程序主色调 -->
+    <color name="user__text_title">#000000</color>
+    <color name="user__text_right">#999999</color>
+
+    <!-- 线条颜色-->
+    <color name="user__top_bar_line_color">#b2b2b2</color>
+    <color name="uc__line_color">#d1d1d1</color>
+
+    <!-- account_btn按钮颜色-->
+    <drawable name="layout_bt_on">#EBEBEB</drawable>
+    <drawable name="reg_bt_on">#969696</drawable>
+</resources>

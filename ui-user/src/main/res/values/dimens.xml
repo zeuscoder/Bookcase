@@ -14,6 +14,9 @@
     <!-- 30px -->
     <dimen name="user__text_size_twenty_eight">12sp</dimen>
 
+
+    <dimen name="user__text_size_twenty_four">10sp</dimen>
+    <!-- 24px -->
     <dimen name="user__text_account_padding">14sp</dimen>
     <!-- 32px -->
 </resources>

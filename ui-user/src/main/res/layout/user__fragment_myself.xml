@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:imagecontrol="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ll_myself"
     android:orientation="vertical"
+    android:background="#CCCCCC"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -22,18 +24,26 @@
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:orientation="horizontal"
                     android:gravity="center"
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp">
-                    <com.zeus.ui_user.view.RoundImageView
+                   <!-- <com.zeus.ui_user.view.RoundImageView
                         android:id="@+id/myself_round_image"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:contentDescription="@string/touxiang"
                         imagecontrol:border_outside_color="#FFFFFFFF"
-                        imagecontrol:border_thickness="2dp" />
+                        imagecontrol:border_thickness="2dp" />-->
+                    <com.github.siyamed.shapeimageview.CircularImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@mipmap/user_account_photo"
+                        app:siBorderWidth="2dp"
+                        app:siBorderColor="#FFFFFF"
+                        />
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/user_account_group"
@@ -109,6 +119,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:background="#FFFFFF"
                 android:layout_marginTop="15dp">
                 <View
                     android:layout_width="match_parent"

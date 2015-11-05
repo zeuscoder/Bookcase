@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.zeus.bookcase.R;
 import com.zeus.bookcase.app.event.FirstActivity;
 import com.zeus.bookcase.app.event.FirstEvent;
+import com.zeus.bookcase.app.ui.home.HomeActivity;
 import com.zeus.skeleton.app.BaseActivity;
 import com.zeus.ui_user.activity.BookListActivity;
 import com.zeus.ui_user.activity.MySelfActivity;
@@ -30,6 +31,7 @@ public class MainActivity extends BaseActivity {
     private Button btn_pull;
     private Button btn_book;
     private Button btn_user;
+    private Button btn_home;
     private TextView tv;
 
     public static Intent actionView(Context context) {
@@ -59,6 +61,7 @@ public class MainActivity extends BaseActivity {
         btn_pull = (Button) findViewById(R.id.btn_pull);
         btn_book = (Button) findViewById(R.id.btn_book);
         btn_user = (Button) findViewById(R.id.btn_user);
+        btn_home = (Button) findViewById(R.id.btn_home);
         tv = (TextView) findViewById(R.id.tv);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +100,14 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MySelfActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });

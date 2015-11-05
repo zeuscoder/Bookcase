@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--程序Tab色调 -->
+    <color name="app__tab_bg">#FFFFFF</color>
+
+    <!-- tab色调 -->
+    <drawable name="select_on">#87CEEB</drawable>
+    <drawable name="select_up">#969696</drawable>
+</resources>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app__tab_bg"
+    >
+    
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#CCCCCC"
+        />
+
+    <FrameLayout
+        android:id="@+id/main_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:id="@+id/fragment_group"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="bottom"
+            android:background="@color/app__tab_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+            
+            <RadioButton
+                android:id="@+id/tab_home"
+                style="@style/tab_layout_radio"
+                android:checked="true"
+                android:drawableTop="@drawable/tab_home"
+                android:text="首页"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/tab_market"
+                style="@style/tab_layout_radio"
+                android:drawableTop="@drawable/tab_market"
+                android:text="市场"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/tab_case"
+                style="@style/tab_layout_radio"
+                android:drawableTop="@drawable/tab_case"
+                android:text="书柜"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/tab_user"
+                style="@style/tab_layout_radio"
+                android:drawableTop="@drawable/tab_user"
+                android:text="我的"
+                android:layout_weight="1"/>
+
+        </RadioGroup>
+
+    </FrameLayout>
+
+</LinearLayout>

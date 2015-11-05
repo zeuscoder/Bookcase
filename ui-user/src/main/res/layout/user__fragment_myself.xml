@@ -30,6 +30,14 @@
                     android:gravity="center"
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp">
+                        <com.github.siyamed.shapeimageview.CircularImageView
+                            android:id="@+id/user_account_photo"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@mipmap/user_account_photo"
+                            app:siBorderWidth="2dp"
+                            app:siBorderColor="#FFFFFF"
+                            />
                    <!-- <com.zeus.ui_user.view.RoundImageView
                         android:id="@+id/myself_round_image"
                         android:layout_width="80dp"
@@ -37,81 +45,41 @@
                         android:contentDescription="@string/touxiang"
                         imagecontrol:border_outside_color="#FFFFFFFF"
                         imagecontrol:border_thickness="2dp" />-->
-                    <com.github.siyamed.shapeimageview.CircularImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@mipmap/user_account_photo"
-                        app:siBorderWidth="2dp"
-                        app:siBorderColor="#FFFFFF"
-                        />
+
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/user_account_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:alpha="0.2"
                     android:orientation="horizontal"
-                    android:background="#FFFFFF">
-                    <Button
-                        android:id="@+id/user_account_pay"
-                        style="@style/layout_btn_account"
+                    android:showDividers="middle"
+                    android:divider="@mipmap/user_account_divider"
+                    android:dividerPadding="16dp"
+                    android:background="#66000000">
+
+                    <TextView
+                        android:id="@+id/tv_register"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="注册"
                         android:layout_weight="1"
-                        android:drawableTop="@mipmap/user_account_pay"
-                        android:text="待付款"/>
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/reg_bt_on"
-                        android:layout_gravity="center_horizontal"/>
-                    <Button
-                        android:id="@+id/user_account_deliver"
-                        style="@style/layout_btn_account"
+                        android:textSize="18sp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="#ffffff" />
+
+                    <TextView
+                        android:id="@+id/tv_login"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="登录"
                         android:layout_weight="1"
-                        android:drawableTop="@mipmap/user_account_deliver"
-                        android:text="待发货"/>
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/reg_bt_on"
-                        android:layout_gravity="center_horizontal"/>
-                    <Button
-                        android:id="@+id/user_account_receive"
-                        style="@style/layout_btn_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawableTop="@mipmap/user_account_receive"
-                        android:text="待收货"/>
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/reg_bt_on"
-                        android:layout_gravity="center_horizontal"/>
-                    <Button
-                        android:id="@+id/user_account_command"
-                        style="@style/layout_btn_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawableTop="@mipmap/user_account_command"
-                        android:text="待评价"/>
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/reg_bt_on"
-                        android:layout_gravity="center_horizontal"/>
-                    <Button
-                        android:id="@+id/user_account_refund"
-                        style="@style/layout_btn_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawableTop="@mipmap/user_account_refund"
-                        android:text="退款"/>
+                        android:textSize="18sp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="#ffffff" />
                 </LinearLayout>
             </LinearLayout>
 

@@ -7,6 +7,14 @@
     <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/app__intro_01.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/app__intro_02.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/app__intro_03.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/tab_case_on.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/tab_case_up.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/tab_home_on.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/tab_home_up.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/tab_market_on.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/tab_market_up.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/tab_user_on.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/tab_user_up.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/drawable/common__app_bar_back_btn.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/drawable/common__btn_bg_long_red_button.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/drawable/common__custom_dialog_btn_bg.xml" charset="GBK" />

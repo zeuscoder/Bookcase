@@ -4,4 +4,8 @@
     <string name="user_myself">我的</string>
     <string name="leftOfTopbar">LeftOfTopbar</string>
     <string name="touxiang">头像</string>
+    <string name="user_account_deliver">待发货</string>
+    <string name="user_account_receive">待收货</string>
+    <string name="user_account_comment">待评价</string>
+    <string name="user_account_refund">退款</string>
 </resources>

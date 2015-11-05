@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@mipmap/user_account_deliver"
-            android:text="待发货"/>
+            android:text="@string/user_account_deliver"/>
         <Button
             android:id="@+id/user_account_receive2"
             style="@style/layout_btn_account"
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@mipmap/user_account_receive"
-            android:text="待收货"/>
+            android:text="@string/user_account_receive"/>
         <Button
             android:id="@+id/user_account_command2"
             style="@style/layout_btn_account"
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@mipmap/user_account_command"
-            android:text="待评价"/>
+            android:text="@string/user_account_comment"/>
         <Button
             android:id="@+id/user_account_refund2"
             style="@style/layout_btn_account"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@mipmap/user_account_refund"
-            android:text="退款"/>
+            android:text="@string/user_account_refund"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"

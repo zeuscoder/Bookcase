@@ -1,1 +1,1 @@
-include ':app', ':skeleton', ':lib-common', ':ui-user'
+include ':app', ':skeleton', ':lib-common', ':ui-user', ':market'

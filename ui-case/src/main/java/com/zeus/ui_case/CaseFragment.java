@@ -1,4 +1,4 @@
-package com.zeus.bookcase.app.ui.home;
+package com.zeus.ui_case;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -7,16 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.zeus.bookcase.R;
-
 /**
- * Created by zeus_coder on 2015/11/5.
+ * Created by zeus_coder on 2015/11/7.
  */
-public class HomeFragment extends Fragment {
+public class CaseFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.app_fragment_home, container, false);
+        return inflater.inflate(R.layout.case_fragment_main, container, false);
     }
 }

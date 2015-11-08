@@ -46,4 +46,6 @@ dependencies {
     compile 'com.jakewharton.timber:timber:2.7.1'
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile project(':ui-user')
+    compile project(':market')
+    compile project(':ui-case')
 }

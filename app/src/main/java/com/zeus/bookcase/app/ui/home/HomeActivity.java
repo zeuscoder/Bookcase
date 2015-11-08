@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.RadioGroup;
 
 import com.zeus.bookcase.R;
+import com.zeus.market.MarketFragment;
+import com.zeus.ui_case.CaseFragment;
 import com.zeus.ui_user.MySelfFragment;
 
 /**
@@ -19,6 +21,8 @@ public class HomeActivity extends Activity {
     private FragmentTransaction transaction;
     private RadioGroup tabGrouop;
     private HomeFragment homeFragment;
+    private MarketFragment marketFragment;
+    private CaseFragment caseFragment;
     private MySelfFragment mySelfFragment;
 
     public View mainView;
@@ -52,7 +56,32 @@ public class HomeActivity extends Activity {
     private RadioGroup.OnCheckedChangeListener checkedChangeListener = new RadioGroup.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
-
+            switch (checkedId) {
+                case R.id.tab_home:
+                    if(null == homeFragment) {
+                        homeFragment = new HomeFragment();
+                    }
+                    replaceFragment(homeFragment);
+                    break;
+                case R.id.tab_market:
+                    if(null == marketFragment) {
+                        marketFragment = new MarketFragment();
+                    }
+                    replaceFragment(marketFragment);
+                    break;
+                case R.id.tab_case:
+                    if(null == caseFragment) {
+                        caseFragment = new CaseFragment();
+                    }
+                    replaceFragment(caseFragment);
+                    break;
+                case R.id.tab_user:
+                    if(null == mySelfFragment) {
+                        mySelfFragment = new MySelfFragment();
+                    }
+                    replaceFragment(mySelfFragment);
+                    break;
+        }
         }
     };
 

@@ -3,6 +3,12 @@
 
     <!--程序Tab色调 -->
     <color name="app__tab_bg">#FFFFFF</color>
+    <color name="app__tab_bg2">#444153</color>
+
+    <!--程序主色调 -->
+    <color name="guillotine_background">#444153</color>
+    <color name="guillotine_background_dark">#383547</color>
+    <color name="selected_item_color">#30d1d5</color>
 
     <!-- tab色调 -->
     <drawable name="select_on">#87CEEB</drawable>

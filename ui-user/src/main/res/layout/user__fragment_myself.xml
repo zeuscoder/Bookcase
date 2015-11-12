@@ -153,6 +153,11 @@
 
             </LinearLayout>
 
+            <com.zeus.common.widget.CanaroTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hell"/>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

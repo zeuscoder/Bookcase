@@ -48,4 +48,6 @@ dependencies {
     compile project(':ui-user')
     compile project(':market')
     compile project(':ui-case')
+    compile project(':lib-common')
+    compile project(':lib-menu')
 }

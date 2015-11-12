@@ -107,6 +107,8 @@
     <orderEntry type="library" exported="" name="dagger-2.0" level="project" />
     <orderEntry type="module" module-name="market" exported="" />
     <orderEntry type="module" module-name="ui-user" exported="" />
+    <orderEntry type="module" module-name="lib-common" exported="" />
+    <orderEntry type="module" module-name="lib-menu" exported="" />
     <orderEntry type="module" module-name="skeleton" exported="" />
     <orderEntry type="module" module-name="ui-case" exported="" />
   </component>

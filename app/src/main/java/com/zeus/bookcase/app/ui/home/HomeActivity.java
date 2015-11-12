@@ -4,10 +4,17 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
+import com.yalantis.guillotine.animation.GuillotineAnimation;
 import com.zeus.bookcase.R;
 import com.zeus.market.MarketFragment;
 import com.zeus.ui_case.CaseFragment;
@@ -16,14 +23,18 @@ import com.zeus.ui_user.MySelfFragment;
 /**
  * Created by zeus_coder on 2015/11/5.
  */
-public class HomeActivity extends Activity {
+public class HomeActivity extends AppCompatActivity {
 
+    private static final long RIPPLE_DURATION = 250;
     private FragmentTransaction transaction;
     private RadioGroup tabGrouop;
     private HomeFragment homeFragment;
     private MarketFragment marketFragment;
     private CaseFragment caseFragment;
     private MySelfFragment mySelfFragment;
+    private Toolbar toolbar;
+    private FrameLayout root;
+    private View contentHamburger;
 
     public View mainView;
 
@@ -33,11 +44,33 @@ public class HomeActivity extends Activity {
         setContentView(R.layout.app__activity_home);
         mainView = new View(this);
 
+        initViews();
+
         //初始化Fragment
         setDefaultFragment();
         //初始化TabGroup
         tabGrouop = (RadioGroup) findViewById(R.id.fragment_group);
         tabGrouop.setOnCheckedChangeListener(checkedChangeListener);
+    }
+
+    private void initViews() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        root = (FrameLayout) findViewById(R.id.root);
+        contentHamburger = (View)findViewById(R.id.content_hamburger);
+
+        if(toolbar != null) {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setTitle(null);
+        }
+
+        View guillotineMenu = LayoutInflater.from(this).inflate(R.layout.app__activity_menu, null);
+        root.addView(guillotineMenu);
+
+        new GuillotineAnimation.GuillotineBuilder(guillotineMenu, guillotineMenu.findViewById(R.id.guillotine_hamburger), contentHamburger)
+                .setStartDelay(RIPPLE_DURATION)
+                .setActionBarViewForAnimation(toolbar)
+                .setClosedOnStart(true)
+                .build();
     }
 
     private void setDefaultFragment() {

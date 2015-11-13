@@ -28,7 +28,7 @@ public class MySelfFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
-        fillView();
+        //fillView();
     }
 
     private void initUI(View view) {

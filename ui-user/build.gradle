@@ -24,7 +24,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile files('libs/afinal_0.5.1_bin.jar')
-
     compile 'com.yalantis:phoenix:1.2.2'
     compile 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
+    compile project(':lib-common')
 }

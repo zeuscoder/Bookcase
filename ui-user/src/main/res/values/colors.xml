@@ -20,4 +20,9 @@
     <!-- account_btn按钮颜色-->
     <drawable name="layout_bt_on">#EBEBEB</drawable>
     <drawable name="reg_bt_on">#969696</drawable>
+
+    <!--程序主色调 -->
+    <color name="guillotine_background">#444153</color>
+    <color name="guillotine_background_dark">#383547</color>
+    <color name="selected_item_color">#30d1d5</color>
 </resources>

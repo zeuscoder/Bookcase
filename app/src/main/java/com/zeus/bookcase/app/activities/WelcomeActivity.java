@@ -11,6 +11,7 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 
 import com.zeus.bookcase.R;
+import com.zeus.bookcase.app.ui.home.HomeActivity;
 import com.zeus.common.app.CommonDialogs;
 import com.zeus.skeleton.app.AppNavigator;
 import com.zeus.skeleton.app.BaseActivity;
@@ -124,7 +125,7 @@ public class WelcomeActivity extends BaseActivity {
 
     public void goToMainActivity() {
         this.finish();
-        Intent intent = new Intent(WelcomeActivity.this,MainActivity.class);
+        Intent intent = new Intent(WelcomeActivity.this,HomeActivity.class);
         startActivity(intent);
 /*        startActivity(IntroActivity.actionView(this, null));*/
     }

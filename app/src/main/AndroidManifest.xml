@@ -14,8 +14,9 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".app.activities.MainActivity"
-            android:label="@string/app_name" >
+            android:name=".app.ui.home.HomeActivity"
+            android:windowSoftInputMode="adjustPan"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,7 +29,7 @@
         <activity android:name=".app.activities.RetrofitActivity"/>
         <activity android:name=".app.activities.SlideViewActivity"/>
         <activity android:name=".app.activities.PullRefreshActivity"/>
-        <activity android:name=".app.ui.home.HomeActivity"/>
+        <activity android:name=".app.activities.MainActivity" android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>

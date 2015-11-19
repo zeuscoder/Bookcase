@@ -4,6 +4,8 @@
 
     <application
         android:allowBackup="true">
+
+        <activity android:name=".MarketActivity"/>
     </application>
 
 </manifest>

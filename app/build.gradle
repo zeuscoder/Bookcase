@@ -50,4 +50,5 @@ dependencies {
     compile project(':ui-case')
     compile project(':lib-common')
     compile project(':lib-menu')
+    compile project(':lib-search')
 }

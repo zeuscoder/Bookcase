@@ -93,6 +93,7 @@
     <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="gson-2.3.1" level="project" />
+    <orderEntry type="library" exported="" name="library-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="eventbus-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-22.2.1" level="project" />
     <orderEntry type="library" exported="" name="timber-2.7.1" level="project" />
@@ -110,6 +111,7 @@
     <orderEntry type="module" module-name="lib-common" exported="" />
     <orderEntry type="module" module-name="lib-menu" exported="" />
     <orderEntry type="module" module-name="skeleton" exported="" />
+    <orderEntry type="module" module-name="lib-search" exported="" />
     <orderEntry type="module" module-name="ui-case" exported="" />
   </component>
 </module>

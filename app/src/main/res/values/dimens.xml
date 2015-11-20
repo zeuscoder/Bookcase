@@ -15,4 +15,10 @@
     <dimen name="guillotine_item_text_size">20sp</dimen>
     <dimen name="guillotine_actionbar_background_view_height">35dp</dimen>
 
+
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="card_cover_height">100dp</dimen>
+
 </resources>

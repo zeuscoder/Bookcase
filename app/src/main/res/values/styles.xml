@@ -96,4 +96,7 @@
         <item name="android:textColor">@color/selected_item_color</item>
     </style>
 
+
+
+
 </resources>

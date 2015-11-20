@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/topbar"
+    android:orientation="vertical"
+    android:background="@color/guillotine_background"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/leftBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/user__layout_tran_bg"
+            android:contentDescription="@string/leftOfTopbar"/>
+
+        <TextView
+            android:id="@+id/topbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/user__text_title"
+            android:textSize="@dimen/user__text_size_thirty_six"/>
+
+        <com.zeus.common.widget.CanaroTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:text="ACTIVITY"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/guillotine_item_text_size" />
+
+        <TextView
+            android:id="@+id/rightBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/user__layout_tran_bg"
+            android:textColor="@color/user__text_right"
+            android:layout_marginRight="12dp"
+            android:textSize="@dimen/user__text_size_thirty_one"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>

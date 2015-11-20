@@ -6,4 +6,9 @@
 
     <color name="common__dialog_button_bar_button_text">#ff6e6f</color>
     <color name="common__dialog_button_bar_button_text_positive">#ff2922</color>
+
+    <!-- BookLoading -->
+    <color name="book_loading_background">#383547</color>
+    <color name="book_loading_book">#ff33b5e5</color>
+    <color name="book_loading_page">#383547</color>
 </resources>

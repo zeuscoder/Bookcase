@@ -31,6 +31,7 @@
         <activity android:name=".app.activities.SlideViewActivity"/>
         <activity android:name=".app.activities.PullRefreshActivity"/>
         <activity android:name=".app.activities.MainActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".app.activities.BookLoadingActivity"/>
 
         <provider
             android:authorities="com.zeus.bookcase"

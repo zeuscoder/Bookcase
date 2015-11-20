@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.zeus.bookcase.R;
 import com.zeus.bookcase.app.activities.BookFoldableActivity;
+import com.zeus.bookcase.app.activities.BookLoadingActivity;
 
 
 /**
@@ -19,7 +20,7 @@ import com.zeus.bookcase.app.activities.BookFoldableActivity;
 public class HomeFragment extends Fragment {
 
     private ImageView centerimagview;
-
+    private ImageView loadimageview;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -30,10 +31,17 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         centerimagview = (ImageView) view.findViewById(R.id.centerimagview);
+        loadimageview = (ImageView) view.findViewById(R.id.book_loading);
         centerimagview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), BookFoldableActivity.class));
+            }
+        });
+        loadimageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), BookLoadingActivity.class));
             }
         });
     }

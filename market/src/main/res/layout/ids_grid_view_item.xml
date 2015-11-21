@@ -7,6 +7,7 @@
     <ImageView
         android:id="@+id/ads_item"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"/>
 
 </LinearLayout>

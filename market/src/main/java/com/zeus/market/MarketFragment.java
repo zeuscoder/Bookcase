@@ -46,8 +46,8 @@ public class MarketFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View EntryView = inflater.inflate(R.layout.market_fragment_main, container,
                 false);
-        specialAdView = (NonScrollingGridView) EntryView.findViewById(R.id.market_ads);
-        imageView = (ImageView) EntryView.findViewById(R.id.news);
+
+
 /*        gridView = (GridView) EntryView.findViewById(R.id.ads);
         gridView.setAdapter(new ImageAdapter(this.getActivity()));*/
 
@@ -57,14 +57,19 @@ public class MarketFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        /*int[] images = new int[] {R.drawable.ads_1};
-        specialAdView.setAdapter(new NonGridViewAdapter(getActivity(), images));*/
-/*        specialAdView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        specialAdView = (NonScrollingGridView) view.findViewById(R.id.market_ads);
+        imageView = (ImageView) view.findViewById(R.id.news);
+        /*
+        * 填充数据
+        * */
+        int[] images = new int[] {R.mipmap.ads_1,R.mipmap.ads_2,R.mipmap.ads_3,R.mipmap.ads_4};
+        specialAdView.setAdapter(new NonGridViewAdapter(getActivity(), images));
+        specialAdView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getActivity(),"he",Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

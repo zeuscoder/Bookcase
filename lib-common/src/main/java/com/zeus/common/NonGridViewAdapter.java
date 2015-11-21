@@ -54,7 +54,7 @@ public class NonGridViewAdapter extends BaseAdapter {
             nonGridViewHolder = (NonGridViewHolder) view.getTag();
         }
         nonGridViewHolder.image.setBackgroundResource(images[position]);
-        return null;
+        return view;
     }
 
     private class NonGridViewHolder {

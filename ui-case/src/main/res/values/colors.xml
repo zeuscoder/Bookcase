@@ -10,4 +10,8 @@
     <color name="eggplant">#663D4E</color>
     <color name="sienna">#EB6460</color>
 
+    <!--menu-->
+    <color name="text_color">#222222</color>
+    <color name="guillotine_background">#444153</color>
+
 </resources>

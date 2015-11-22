@@ -7,6 +7,7 @@ import android.widget.GridView;
 import com.zeus.common.ViewUtils;
 
 /**
+ * 不滚动GridView
  * Created by zeus_coder on 2015/11/14.
  */
 public class NonScrollingGridView extends GridView {

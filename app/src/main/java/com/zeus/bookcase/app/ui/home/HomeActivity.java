@@ -1,6 +1,5 @@
 package com.zeus.bookcase.app.ui.home;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;

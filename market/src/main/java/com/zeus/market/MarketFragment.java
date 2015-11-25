@@ -46,11 +46,8 @@ public class MarketFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View EntryView = inflater.inflate(R.layout.market_fragment_main, container,
                 false);
-
-
 /*        gridView = (GridView) EntryView.findViewById(R.id.ads);
         gridView.setAdapter(new ImageAdapter(this.getActivity()));*/
-
         return EntryView;
     }
 

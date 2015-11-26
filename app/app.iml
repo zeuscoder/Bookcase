@@ -110,8 +110,8 @@
     <orderEntry type="library" exported="" name="phoenix-1.2.2" level="project" />
     <orderEntry type="library" exported="" name="support-v4-23.1.0" level="project" />
     <orderEntry type="library" exported="" name="analytics-5.6.1" level="project" />
-    <orderEntry type="library" exported="" name="dagger-2.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-23.1.0" level="project" />
+    <orderEntry type="library" exported="" name="dagger-2.0" level="project" />
     <orderEntry type="module" module-name="market" exported="" />
     <orderEntry type="module" module-name="ui-user" exported="" />
     <orderEntry type="module" module-name="lib-common" exported="" />

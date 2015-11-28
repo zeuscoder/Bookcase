@@ -75,7 +75,9 @@ public class HomeActivity extends AppCompatActivity {
             setSupportActionBar(toolbar);
             getSupportActionBar().setTitle(null);
         }
-
+        /*
+        * 主菜单
+        * */
         View guillotineMenu = LayoutInflater.from(this).inflate(R.layout.app__activity_menu, null);
         root.addView(guillotineMenu);
 
@@ -84,7 +86,9 @@ public class HomeActivity extends AppCompatActivity {
                 .setActionBarViewForAnimation(toolbar)
                 .setClosedOnStart(true)
                 .build();
-
+        /*
+        * 搜索栏
+        * */
         content_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

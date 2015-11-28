@@ -31,20 +31,20 @@ public class NonScrollingGridView extends GridView {
         super.onMeasure(widthMeasureSpec, expandSpec);
     }
 
-    /**通过重新dispatchTouchEvent方法来禁止滑动*/
+/*    *//**通过重新dispatchTouchEvent方法来禁止滑动*//*
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_MOVE) {
-           return true;/**只要简单改下这里就可以禁止Gridview进行滑动*/
+           return true;*//**只要简单改下这里就可以禁止Gridview进行滑动*//*
         }
         return super.dispatchTouchEvent(ev);
-    }
-
+    }*/
+/*
     @Override
     protected void onDetachedFromWindow() {
         if(!ViewUtils.isAttachedToWindow(this)) {
             return;
         }
         super.onDetachedFromWindow();
-    }
+    }*/
 }

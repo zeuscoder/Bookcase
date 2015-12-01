@@ -4,8 +4,8 @@
 
     <application
         android:allowBackup="true">
-
         <activity android:name=".MarketActivity"/>
+        <activity android:name=".BookDiscountActivity"/>
     </application>
 
 </manifest>

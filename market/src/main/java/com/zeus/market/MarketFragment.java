@@ -71,12 +71,12 @@ public class MarketFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(),"he",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getActivity(), MarketActivity.class));
+                startActivity(new Intent(getActivity(), BookDiscountActivity.class));
             }
         });
     }
 
-    public class ImageAdapter extends BaseAdapter {
+ /*   public class ImageAdapter extends BaseAdapter {
 
         private Context mContext;
         private LayoutInflater inflater;
@@ -110,5 +110,5 @@ public class MarketFragment extends Fragment {
             imageView.setImageResource(R.drawable.icon);
             return convertView;
         }
-    }
+    }*/
 }

@@ -22,6 +22,12 @@
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/layout/common__custom_dialog.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/layout/common__dialog_loading_view.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/layout/common__loading_item.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/lib-common/src/main/res/layout/common__material_tab.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/lib-common/src/main/res/layout/common__material_tab_icon.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/lib-common/src/main/res/layout/common__tab.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/lib-common/src/main/res/layout/common__tab_icon.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/lib-common/src/main/res/mipmap-hdpi/left_arrow.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/lib-common/src/main/res/mipmap-hdpi/right_arrow.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/mipmap-xhdpi/common__app_bar_back_btn_normal.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/mipmap-xhdpi/common__app_bar_back_btn_pressed.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/mipmap-xhdpi/common__btn_red_normal.9.png" charset="GBK" />
@@ -29,6 +35,9 @@
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/mipmap-xhdpi/common__custom_dialog_bg.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/mipmap-xhdpi/common__ic_app_bar_back_1.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/mipmap-xhdpi/common__ic_app_bar_back_2.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/lib-common/src/main/res/values-w820dp/bools.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/lib-common/src/main/res/values-w820dp/ids.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/lib-common/src/main/res/values/bools.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/values/colors.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-menu/src/main/java/com/zeus/menu/HesitateInterpolator.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-menu/src/main/java/com/zeus/menu/MenuAdapter.java" charset="GBK" />

@@ -20,6 +20,7 @@ import com.quinny898.library.persistentsearch.SearchBox;
 import com.quinny898.library.persistentsearch.SearchResult;
 import com.yalantis.guillotine.animation.GuillotineAnimation;
 import com.zeus.bookcase.R;
+import com.zeus.bookcase.app.activities.BookSearchActivity;
 import com.zeus.market.MarketFragment;
 import com.zeus.ui_case.CaseFragment;
 import com.zeus.ui_user.MySelfFragment;
@@ -92,61 +93,10 @@ public class HomeActivity extends AppCompatActivity {
         content_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openSearch();
+                //openSearch();
+                startActivity(new Intent(HomeActivity.this, BookSearchActivity.class));
             }
         });
-    }
-
-    public void openSearch() {
-        search.revealFromMenuItem(R.id.content_search, this);
-        search.setSearchListener(new SearchBox.SearchListener() {
-
-            @Override
-            public void onSearchOpened() {
-                // Use this to tint the screen
-
-            }
-
-            @Override
-            public void onSearchClosed() {
-                // Use this to un-tint the screen
-                closeSearch();
-            }
-
-            @Override
-            public void onSearchTermChanged(String term) {
-                // React to the search term changing
-                // Called after it has updated results
-            }
-
-            @Override
-            public void onSearch(String searchTerm) {
-                Toast.makeText(HomeActivity.this, searchTerm + " Searched",
-                        Toast.LENGTH_LONG).show();
-                //toolbar.setTitle(searchTerm);
-
-            }
-
-            @Override
-            public void onResultClick(SearchResult result) {
-                //React to result being clicked
-            }
-
-            @Override
-            public void onSearchCleared() {
-
-            }
-        });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1234 && resultCode == RESULT_OK) {
-            ArrayList<String> matches = data
-                    .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-            search.populateEditText(matches.get(0));
-        }
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private void setDefaultFragment() {
@@ -203,7 +153,4 @@ public class HomeActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    protected void closeSearch() {
-        search.hideCircularly(this);
-    }
 }

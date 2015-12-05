@@ -36,9 +36,9 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:src="@mipmap/user_account_photo"
-                            app:siBorderWidth="2dp"
-                            app:siBorderColor="#FFFFFF"
                             />
+                    <!--    app:siBorderWidth="2dp"
+                            app:siBorderColor="#FFFFFF"-->
                    <!-- <com.zeus.ui_user.view.RoundImageView
                         android:id="@+id/myself_round_image"
                         android:layout_width="80dp"

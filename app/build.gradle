@@ -49,6 +49,7 @@ dependencies {
     provided 'org.glassfish:javax.annotation:10.0-b28'
     /*图片加载*/
     compile files('libs/universal-image-loader-1.9.4.jar')
+    //compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     /*下拉刷新*/
     compile 'com.yalantis:phoenix:1.2.2'
     /*错误统计*/
@@ -62,8 +63,8 @@ dependencies {
     compile project(':skeleton')
     compile project(':ui-user')
     compile project(':market')
-    compile project(':ui-case')
     compile project(':lib-common')
     compile project(':lib-menu')
     compile project(':lib-search')
+    compile project(':ui-case')
 }

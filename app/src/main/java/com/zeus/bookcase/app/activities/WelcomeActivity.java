@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
@@ -15,6 +16,8 @@ import com.zeus.bookcase.app.ui.home.HomeActivity;
 import com.zeus.common.app.CommonDialogs;
 import com.zeus.skeleton.app.AppNavigator;
 import com.zeus.skeleton.app.BaseActivity;
+
+import java.io.OutputStream;
 
 /**
  * 欢迎启动页
@@ -51,6 +54,13 @@ public class WelcomeActivity extends BaseActivity {
      * 登录检测
      */
     private boolean loginFinished;
+
+    /**
+    * 介绍页检测
+    */
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+    private OutputStream os;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +107,7 @@ public class WelcomeActivity extends BaseActivity {
                     openingDialog.setCanceledOnTouchOutside(false);
                     openingDialog.setCancelable(false);
                 } else {
-                    checkGPS();
+                    //checkGPS();
                 }
             }
 
@@ -108,6 +118,19 @@ public class WelcomeActivity extends BaseActivity {
         });
         imageView.setAnimation(animation);
         //检测登录代码
+        //检测介绍页代码
+        preferences = getSharedPreferences("phone", Context.MODE_PRIVATE);
+        //判断是否首次启动
+        if (preferences.getBoolean("fisrtstart", true)) {
+            editor = preferences.edit();
+            //将登录标志位设置为false，下次登录时不在显示首次登录界面
+            editor.putBoolean("fisrtstart", false);
+            editor.commit();
+            startActivity(new Intent(WelcomeActivity.this, IntroActivity.class));
+        } else {
+            startActivity(new Intent(WelcomeActivity.this, HomeActivity.class));
+        }
+        this.finish();
     }
 
     @Override
@@ -125,7 +148,7 @@ public class WelcomeActivity extends BaseActivity {
 
     public void goToMainActivity() {
         this.finish();
-        Intent intent = new Intent(WelcomeActivity.this,HomeActivity.class);
+        Intent intent = new Intent(WelcomeActivity.this,IntroActivity.class);
         startActivity(intent);
 /*        startActivity(IntroActivity.actionView(this, null));*/
     }

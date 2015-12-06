@@ -1,22 +1,42 @@
 package com.zeus.bookcase.app.activities;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Parcelable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.zeus.bookcase.R;
 import com.zeus.bookcase.app.data.prefs.AppPrefs;
+import com.zeus.bookcase.app.ui.home.HomeActivity;
+import com.zeus.bookcase.app.view.IntroArroundView;
+import com.zeus.bookcase.app.view.IntroBookView;
+import com.zeus.bookcase.app.view.IntroSunMoonView;
 import com.zeus.skeleton.app.BaseActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -24,156 +44,516 @@ import java.util.List;
  *
  * Created by zeus_coder on 2015/10/16.
  */
-public class IntroActivity extends BaseActivity{
+public class IntroActivity extends AppCompatActivity{
 
-    /**
-     * 引导页内容的版本号, 以日期为版本
-     */
-    private static final String CURRENT_INTRO_VERSION = "20151018";
+    private static final int NUM_PAGES = 3;
+    private ViewPager mPager;
+    private LinearLayout mIndicatorLayout;
+    private TextView mIndicatorView[];
+    private Drawable mPagerBackground;
 
-    // type: Intent
-    private static final String EXTRA_NEXT_ACTIVITY_INTENT = "app:next-activity-intent";
 
-    int[] imgIds = {
-            R.drawable.app__intro_01,
-            R.drawable.app__intro_02,
-            R.drawable.app__intro_03
-    };
+    private ImageView mCenterBox;
+    private ImageView mCamcordImage;
+    private ImageView mClockImage;
+    private ImageView mGraphImage;
+    private ImageView mAudioImage;
+    private ImageView mQuoteImage;
+    private ImageView mMapImage;
+    private ImageView mWordPressImage;
 
-    private ViewPager vp;
-    private List<View> views;
-    //记录当前位置
-    private int currentIndex = 0;
-    private boolean misScrolled;
+    private AnimatorSet mAnimatorSet;
 
-    public static Intent actionView(Context context, Intent activityIntent) {
-        if (activityIntent == null) {
-            //只进入导航页
-            return new Intent(context, IntroActivity.class);
-        }
-        if (AppPrefs.getInstance().hasIntroShown(CURRENT_INTRO_VERSION)) {
-            // 导航页已经展示过了, 直接跳转到目标页面
-            return activityIntent;
-        }
-        return new Intent(context,IntroActivity.class)
-                .putExtra(EXTRA_NEXT_ACTIVITY_INTENT,activityIntent);
-    }
+    private TextView mTitleText;
+    private TextView mDescText;
+
+
+    private boolean mSecondPageSelected;
+    private HashMap<ImageView, Float> mOriginalXValuesMap = new HashMap<>();
+    private int mSelectedPosition = -1;
+
+    //Second screen
+    private IntroSunMoonView mAnimationView;
+    private float mPreviousPositionOffset;
+    private boolean mViewPagerScrollingLeft;
+    private int mPreviousPosition;
+    private IntroBookView mBookView;
+
+
+    // Third screen
+    private boolean mShouldSpheresRotate = true;
+    private IntroArroundView mRoundView;
+    private boolean mThirdPageSelected;
+    private Button mLetsGoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.app__activity_intro);
-        initViews();
+        setContentView(R.layout.activity_intro_main);
+
+        setUpViews();
+
+
     }
 
-    private void initViews() {
-        LayoutInflater inflater = LayoutInflater.from(this);
+    private void setUpViews() {
 
-        views = new ArrayList<View>();
-        //初始化引导图片列表
-        for (int imgId:imgIds) {
-            RelativeLayout view = (RelativeLayout) inflater.inflate(R.layout.app__intro_item, null);
-            ImageView image = (ImageView) view.findViewById(R.id.intro_img);
-            image.setImageResource(imgId);
-            views.add(view);
+        mPager = (ViewPager) findViewById(R.id.intro_pager);
+        //mPagerBackground = mPager.getBackground();
+        mIndicatorLayout = (LinearLayout) findViewById(R.id.indicator_layout);
+
+        mPager.setAdapter(new ScreenSlidePagerAdapter(getSupportFragmentManager()));
+        setIndicatorLayout();
+        setPageChangeListener(mPager);
+        mPager.bringToFront();
+        //mPagerBackground.setAlpha(0);
+
+        //mPager.setOffscreenPageLimit(2);
+
+    }
+
+    private void setIndicatorLayout() {
+
+        int dotsCount = NUM_PAGES;
+        mIndicatorView = new TextView[dotsCount];
+        for (int i = 0; i < dotsCount; i++) {
+
+            mIndicatorView[i] = new TextView(this);
+            mIndicatorView[i].setWidth((int)getResources().getDimension(R.dimen.dimen_12));
+            mIndicatorView[i].setHeight((int)getResources().getDimension(R.dimen.dimen_12));
+            mIndicatorView[i].setGravity(Gravity.CENTER);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            params.setMargins(0, 0, (int)getResources().getDimension(R.dimen.dimen_15), 0);
+            mIndicatorView[i].setLayoutParams(params);
+            mIndicatorView[i].setBackgroundResource(R.drawable.intro_rounded_cell_gray);
+            mIndicatorLayout.addView(mIndicatorView[i]);
+
         }
-        //初始化Adapter
-        MyPagerAdapter adapter = new MyPagerAdapter(views);
-        vp = (ViewPager) findViewById(R.id.viewPager);
-        vp.setAdapter(adapter);
-        // 绑定回调
-        vp.setCurrentItem(currentIndex);
-//        vp.setOnPageChangeListener(new MyOnPageChangeListener());
+
+        //mIndicatorView[0].setWidth(20);
+        //mIndicatorView[0].setHeight(20);
+        mIndicatorView[0].setBackgroundResource(R.drawable.intro_rounded_cell_red);
+        mIndicatorView[0].setGravity(Gravity.CENTER);
     }
 
-    private void finishIntro() {
-        AppPrefs.getInstance().updateIntroShownVersion(CURRENT_INTRO_VERSION);
-        Intent nextActivityIntent = getIntent().getParcelableExtra(EXTRA_NEXT_ACTIVITY_INTENT);
-        if (nextActivityIntent != null) {
-            startActivity(nextActivityIntent);
-        }
-        finish();
+    private void setPageChangeListener(ViewPager viewPager) {
+
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            int oldPos = mPager.getCurrentItem();
+
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                // Scrollling left or right
+                if ((positionOffset > mPreviousPositionOffset && position == mPreviousPosition) || (positionOffset < mPreviousPositionOffset && position > mPreviousPosition)) {
+                    mViewPagerScrollingLeft = true;
+                } else if (positionOffset < mPreviousPositionOffset) {
+
+                    mViewPagerScrollingLeft = false;
+                }
+                mPreviousPositionOffset = positionOffset;
+                mPreviousPosition = position;
+
+                // FADE the indicator layout
+                if (position == 1 && mViewPagerScrollingLeft) {
+
+                    mIndicatorLayout.setAlpha(1 - positionOffset);
+                } else if (position == 1 && !mViewPagerScrollingLeft) {
+
+                    mIndicatorLayout.setAlpha(1 - positionOffset);
+                }
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                if (position == 1) {
+                    mSelectedPosition = 1;
+                    mSecondPageSelected = true;
+                    setViewsInOriginalPosition();
+                    //initializeAlpha();
+                    if (mAnimatorSet != null) {
+                        mAnimatorSet.cancel();
+                    }
+
+                    animateBookView();
+                }
+                if (position == 0) {
+                    mSelectedPosition = 0;
+                    doFadeAnimation();
+
+                }
+
+
+                for (int i = 0; i < mIndicatorView.length; i++) {
+                    mIndicatorView[i].setBackgroundResource(R.drawable.intro_rounded_cell_gray);
+                }
+                mIndicatorView[position].setBackgroundResource(R.drawable.intro_rounded_cell_red);
+            }
+
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+                if (state == ViewPager.SCROLL_STATE_DRAGGING) {
+                    mShouldSpheresRotate = false;
+                } else if (state == ViewPager.SCROLL_STATE_IDLE) {
+                    mShouldSpheresRotate = true;
+                }
+                if (mRoundView != null) {
+                    mRoundView.setRotatingPermission(mShouldSpheresRotate);
+                }
+
+                if (mSelectedPosition == 0 && state == ViewPager.SCROLL_STATE_IDLE) {
+                    mSecondPageSelected = false;
+                }
+
+            }
+        });
+
     }
 
-    @Override
-    public void onBackPressed() {
+    private void animateBookView() {
+
+        mBookView.fadeInTheLines();
+    }
+
+    private void setViewsInOriginalPosition() {
+
+        mCenterBox.setX(mOriginalXValuesMap.get(mCenterBox));
+        mCamcordImage.setX(mOriginalXValuesMap.get(mCamcordImage));
+        mClockImage.setX(mOriginalXValuesMap.get(mClockImage));
+        mGraphImage.setX(mOriginalXValuesMap.get(mGraphImage));
+        mAudioImage.setX(mOriginalXValuesMap.get(mAudioImage));
+        mQuoteImage.setX(mOriginalXValuesMap.get(mQuoteImage));
+        mMapImage.setX(mOriginalXValuesMap.get(mMapImage));
+        mWordPressImage.setX(mOriginalXValuesMap.get(mWordPressImage));
+
+        initializeAlpha();
 
     }
 
-    /**
-     * viewPage 适配器
-     */
-    class MyPagerAdapter extends PagerAdapter {
-
-        private List<View> views;
-
-        public MyPagerAdapter(List<View> views) {
-            this.views = views;
+    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+        public ScreenSlidePagerAdapter(FragmentManager fm) {
+            super(fm);
         }
 
         @Override
-        public void destroyItem(View arg0, int arg1, Object object) {
-            ((ViewPager) arg0).removeView(views.get(arg1));
+        public Fragment getItem(int position) {
+
+            ScreenSlideFragment fragment = new ScreenSlideFragment();
+            Bundle args = new Bundle();
+            args.putInt("position", position);
+            fragment.setArguments(args);
+
+            return fragment;
         }
 
         @Override
         public int getCount() {
-            if (views != null)
-            {
-                return views.size();
-            }
-
-            return 0;
-        }
-
-        @Override
-        public Object instantiateItem(View arg0, int arg1) {
-            ((ViewPager) arg0).addView(views.get(arg1), 0);
-            return views.get(arg1);
-        }
-
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return (view == object);
-        }
-
-        @Override
-        public Parcelable saveState() {
-            return null;
+            return NUM_PAGES;
         }
     }
 
-    /**
-     * 页卡切换监听
-     */
-    public class MyOnPageChangeListener implements OnPageChangeListener {
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    private class CustomTransformer implements ViewPager.PageTransformer {
+
 
         @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        public void transformPage(View page, float position) {
+
+            int pageWidth = page.getWidth();
+            if ((mViewPagerScrollingLeft && page.findViewById(R.id.center_box) != null)) {
+                animateSecondScreen(position, pageWidth, 0);
+            }
+
+            if (!mViewPagerScrollingLeft && page.findViewById(R.id.center_box_second) != null) {
+                animateSecondScreen(position, pageWidth, 1);
+            }
+
+            if (position < -1) {
+
+            } else if (position <= 1) {
+
+                if (!mSecondPageSelected && page.findViewById(R.id.center_box_second) != null) {
+                    moveTheSpheres(position, pageWidth);
+                }
+
+                if (!mShouldSpheresRotate && page.findViewById(R.id.center_box_third) != null) {
+                    mRoundView.translateTheSpheres(position, pageWidth);
+                }
+
+
+            } else {
+
+            }
+
+        }
+    }
+
+    private void moveTheSpheres(float position, int pageWidth) {
+
+
+        float camcordPos = (float) ((1 - position) * 0.15 * pageWidth);
+        if (camcordPos > (-1 * mOriginalXValuesMap.get(mCamcordImage))) {
+            mCamcordImage.setTranslationX(camcordPos);
+        }
+
+
+        float clockPos = (float) ((1 - position) * 0.50 * pageWidth);
+        if (clockPos > (-1 * mOriginalXValuesMap.get(mClockImage))) {
+            mClockImage.setTranslationX(clockPos);
+        }
+
+        float graphPos = (float) ((1 - position) * 0.50 * pageWidth);
+        if (graphPos > (-1 * mOriginalXValuesMap.get(mGraphImage))) {
+            mGraphImage.setTranslationX(graphPos);
+        }
+
+        float audioPos = (float) ((1 - position) * 0.30 * pageWidth);
+        if (audioPos > (-1 * mOriginalXValuesMap.get(mAudioImage))) {
+            mAudioImage.setTranslationX(audioPos);
+        }
+
+
+        float quotePos = (float) (-(1 - position) * 0.37 * pageWidth);
+        if (quotePos > (-1 * mOriginalXValuesMap.get(mQuoteImage))) {
+            mQuoteImage.setTranslationX(quotePos);
+        }
+
+        float mapPos = (float) (-(1 - position) * 1.1 * pageWidth);
+        if (mapPos > (-1 * mOriginalXValuesMap.get(mMapImage))) {
+            mMapImage.setTranslationX(mapPos);
+        }
+
+        float wordpressPos = (float) (-(1 - position) * 0.37 * pageWidth);
+        if (wordpressPos > (-1 * mOriginalXValuesMap.get(mWordPressImage))) {
+            mWordPressImage.setTranslationX(wordpressPos);
+        }
+
+
+    }
+
+    private void animateSecondScreen(float position, int pageWidth, int direction) {
+
+        if (direction == 0) {
+            mAnimationView.animateSecondScreenClock(position);
+        } else {
+            mAnimationView.animateSecondScreenAntiClock(position);
+        }
+    }
+
+
+    public class ScreenSlideFragment extends Fragment {
+
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+
+            Bundle args = getArguments();
+            int position = args.getInt("position");
+            int layoutId = getLayoutId(position);
+
+
+            ViewGroup rootView = (ViewGroup) inflater.inflate(layoutId, container, false);
+            if (position == 0) {
+
+                initFirstScreenViews(rootView, savedInstanceState);
+            }
+            if (position == 1) {
+
+                initSecondScreenViews(rootView, savedInstanceState);
+            }
+            if (position == 2) {
+
+                initThirdScreenViews(rootView, savedInstanceState);
+            }
+
+            return rootView;
+        }
+
+        private int getLayoutId(int position) {
+
+            int id = 0;
+            if (position == 0) {
+
+                id = R.layout.activity_intro_first_screen;
+
+            } else if (position == 1) {
+
+                id = R.layout.activity_intro_second_screen;
+            } else if (position == 2) {
+
+                id = R.layout.activity_intro_third_screen;
+            }
+            return id;
+        }
+
+
+    }
+
+    private void initFirstScreenViews(View rootView, final Bundle savedInstanceState) {
+
+        mCenterBox = (ImageView) rootView.findViewById(R.id.center_box);
+        mCamcordImage = (ImageView) rootView.findViewById(R.id.imageView);
+        mClockImage = (ImageView) rootView.findViewById(R.id.imageView6);
+        mGraphImage = (ImageView) rootView.findViewById(R.id.imageView3);
+        mAudioImage = (ImageView) rootView.findViewById(R.id.imageView4);
+        mQuoteImage = (ImageView) rootView.findViewById(R.id.imageView5);
+        mMapImage = (ImageView) rootView.findViewById(R.id.imageView2);
+        mWordPressImage = (ImageView) rootView.findViewById(R.id.imageView7);
+
+        initializeAlpha();
+
+        rootView.post(new Runnable() {
+            @Override
+            public void run() {
+
+                getOriginalXValues(savedInstanceState);
+
+            }
+        });
+
+        if (savedInstanceState == null) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    doFadeAnimation();
+                }
+            }, 700);
 
         }
 
-        @Override
-        public void onPageSelected(int position) {
+    }
 
+    private void getOriginalXValues(Bundle savedInstanceState) {
+
+        mOriginalXValuesMap.put(mCenterBox, mCenterBox.getX());
+        mOriginalXValuesMap.put(mCamcordImage, mCamcordImage.getX());
+        mOriginalXValuesMap.put(mClockImage, mClockImage.getX());
+        mOriginalXValuesMap.put(mGraphImage, mGraphImage.getX());
+        mOriginalXValuesMap.put(mAudioImage, mAudioImage.getX());
+        mOriginalXValuesMap.put(mQuoteImage, mQuoteImage.getX());
+        mOriginalXValuesMap.put(mMapImage, mMapImage.getX());
+        mOriginalXValuesMap.put(mWordPressImage, mWordPressImage.getX());
+
+        if (savedInstanceState == null) {
+            mPager.setPageTransformer(true, new CustomTransformer());
         }
 
+
+    }
+
+    private void initializeAlpha() {
+
+        mCamcordImage.setAlpha(0f);
+        mClockImage.setAlpha(0f);
+        mGraphImage.setAlpha(0f);
+        mAudioImage.setAlpha(0f);
+        mQuoteImage.setAlpha(0f);
+        mMapImage.setAlpha(0f);
+        mWordPressImage.setAlpha(0f);
+    }
+
+    private void doFadeAnimation() {
+
+
+        ObjectAnimator fadeCamcord = ObjectAnimator.ofFloat(mCamcordImage, "alpha", 0f, 1f);
+        fadeCamcord.setDuration(700);
+
+        ObjectAnimator fadeClock = ObjectAnimator.ofFloat(mClockImage, "alpha", 0f, 1f);
+        fadeClock.setDuration(700);
+
+        ObjectAnimator fadeGraph = ObjectAnimator.ofFloat(mGraphImage, "alpha", 0f, 1f);
+        fadeGraph.setDuration(700);
+
+        ObjectAnimator fadeAudio = ObjectAnimator.ofFloat(mAudioImage, "alpha", 0f, 1f);
+        fadeAudio.setDuration(700);
+
+        ObjectAnimator fadeQuote = ObjectAnimator.ofFloat(mQuoteImage, "alpha", 0f, 1f);
+        fadeQuote.setDuration(700);
+
+        ObjectAnimator fadeMap = ObjectAnimator.ofFloat(mMapImage, "alpha", 0f, 1f);
+        fadeMap.setDuration(700);
+
+        ObjectAnimator fadeWordpress = ObjectAnimator.ofFloat(mWordPressImage, "alpha", 0f, 1f);
+        fadeWordpress.setDuration(700);
+
+        //1 5    3 2  7 6  4
+
+        mAnimatorSet = new AnimatorSet();
+        fadeAudio.setStartDelay(50);
+        fadeGraph.setStartDelay(200);
+        fadeWordpress.setStartDelay(500);
+        fadeClock.setStartDelay(700);
+        fadeMap.setStartDelay(900);
+        fadeQuote.setStartDelay(1100);
+
+        mAnimatorSet.play(fadeCamcord).with(fadeAudio).with(fadeGraph).with(fadeWordpress).with(fadeClock).with(fadeMap).with(fadeQuote);
+        mAnimatorSet.start();
+
+    }
+
+    private void initSecondScreenViews(View rootView, Bundle savedInstanceState) {
+
+        final RelativeLayout secondScreenRoot = (RelativeLayout) rootView.findViewById(R.id.root);
+        //final ImageView centerBox=(ImageView)rootView.findViewById(R.id.center_box_second);
+        mBookView = (IntroBookView) rootView.findViewById(R.id.center_box_second);
+        mAnimationView = (IntroSunMoonView) rootView.findViewById(R.id.animation_view);
+
+
+    }
+
+    private void initThirdScreenViews(View rootView, Bundle savedInstanceState) {
+
+        mRoundView = (IntroArroundView) rootView.findViewById(R.id.round_view);
+        mLetsGoButton = (Button) rootView.findViewById(R.id.letsgo);
+
+        mLetsGoButton.setOnClickListener(clickListener);
+        mRoundView.setContext(this);
+
+    }
+
+    View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
-        public void onPageScrollStateChanged(int state) {
-            switch (state) {
-                case ViewPager.SCROLL_STATE_DRAGGING:
-                    misScrolled = false;
-                    break;
-                case ViewPager.SCROLL_STATE_SETTLING:
-                    misScrolled = true;
-                    break;
-                case ViewPager.SCROLL_STATE_IDLE:
-                    if (vp.getCurrentItem() == vp.getAdapter().getCount() - 1 && !misScrolled) {
-                        finishIntro();
-                    }
-                    misScrolled = true;
+        public void onClick(View v) {
+
+            switch (v.getId()) {
+
+                case R.id.letsgo:
+                    mRoundView.startNextScreen();
+                    startActivity(new Intent(IntroActivity.this, HomeActivity.class));
+                    finish();
                     break;
             }
         }
-    }
+    };
 }

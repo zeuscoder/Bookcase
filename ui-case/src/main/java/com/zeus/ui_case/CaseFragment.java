@@ -9,12 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.zeus.ui_case.view.MusicCardActivity;
+
+import static com.zeus.ui_case.R.id.music_store;
+
 /**
  * Created by zeus_coder on 2015/11/7.
  */
 public class CaseFragment extends Fragment {
 
     private LinearLayout bookStore;
+    private LinearLayout musicStore;
 
     @Nullable
     @Override
@@ -26,10 +31,17 @@ public class CaseFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bookStore = (LinearLayout) view.findViewById(R.id.book_store);
+        musicStore = (LinearLayout) view.findViewById(R.id.music_store);
         bookStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), DetailActivity.class));
+            }
+        });
+        musicStore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), MusicCardActivity.class));
             }
         });
     }

@@ -4,10 +4,8 @@
 
     <application
         android:allowBackup="true">
-
-        <activity android:name=".DetailActivity"/>
-        <activity android:name=".view.MusicCardActivity"/>
-
+        <activity android:name=".activity.DetailActivity"/>
+        <activity android:name=".activity.MusicCardActivity"/>
     </application>
 
 </manifest>

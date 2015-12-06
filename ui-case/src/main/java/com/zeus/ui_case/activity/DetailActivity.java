@@ -1,4 +1,4 @@
-package com.zeus.ui_case;
+package com.zeus.ui_case.activity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -22,6 +22,8 @@ import com.zeus.menu.MenuObject;
 import com.zeus.menu.MenuParams;
 import com.zeus.menu.interfaces.OnMenuItemClickListener;
 import com.zeus.menu.interfaces.OnMenuItemLongClickListener;
+import com.zeus.ui_case.MainFragment;
+import com.zeus.ui_case.R;
 
 import java.util.ArrayList;
 import java.util.List;

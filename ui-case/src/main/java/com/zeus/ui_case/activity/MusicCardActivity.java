@@ -1,4 +1,4 @@
-package com.zeus.ui_case.view;
+package com.zeus.ui_case.activity;
 
 import android.os.Bundle;
 
@@ -13,6 +13,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.zeus.ui_case.R;
+import com.zeus.ui_case.view.CardFragment;
 
 /**
  * Created by zeus_coder on 2015/12/5.

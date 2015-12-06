@@ -9,9 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.zeus.ui_case.view.MusicCardActivity;
-
-import static com.zeus.ui_case.R.id.music_store;
+import com.zeus.ui_case.activity.DetailActivity;
+import com.zeus.ui_case.activity.MusicCardActivity;
 
 /**
  * Created by zeus_coder on 2015/11/7.

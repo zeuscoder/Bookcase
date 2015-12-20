@@ -17,7 +17,7 @@ import java.io.IOException;
 /**
  * Created by zeus_coder on 2015/11/20.
  */
-public class BookFoldableActivity extends com.zeus.ui_user.activity.BaseActivity {
+public class BookFoldableActivity extends BaseActivity {
 
     private RecyclerView mRecyclerView;
     private PullToRefreshView mPullToRefreshView;

@@ -25,6 +25,17 @@
             style="@style/ImageView.GuillotineItem"
             android:src="@mipmap/ic_profile" />
 
+        <com.zeus.common.widget.CanaroTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="24dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="登录"
+            android:textColor="#fff"
+            />
+
     </LinearLayout>
 
     <LinearLayout

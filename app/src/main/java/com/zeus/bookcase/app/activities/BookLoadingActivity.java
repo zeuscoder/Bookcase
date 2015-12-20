@@ -21,7 +21,8 @@ public class BookLoadingActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity__book_loading);
+        setContentView(R.layout.app_book_detail);
+/*        setContentView(R.layout.activity__book_loading);
         bookLoading= (BookLoading) findViewById(R.id.bookloading);
         button = (Button) findViewById(R.id.button);
 
@@ -36,6 +37,6 @@ public class BookLoadingActivity extends Activity{
                     bookLoading.start();
                 }
             }
-        });
+        });*/
     }
 }

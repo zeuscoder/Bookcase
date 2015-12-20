@@ -15,7 +15,6 @@
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/drawable/common__app_bar_back_btn.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/drawable/common__btn_bg_long_red_button.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/drawable/common__custom_dialog_btn_bg.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/lib-common/src/main/res/drawable/common__ic_app_bar_back.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/layout/common__custom_dialog.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/layout/common__dialog_loading_view.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-common/src/main/res/layout/common__loading_item.xml" charset="GBK" />
@@ -53,6 +52,9 @@
     <file url="file://$PROJECT_DIR$/ui-case/src/main/res/mipmap-hdpi/icn_5.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ui-case/src/main/res/mipmap-hdpi/icn_close.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ui-case/src/main/res/mipmap-hdpi/photo.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ui-user/src/main/res/drawable/ic_group_black_24dp.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ui-user/src/main/res/drawable/ic_notifications_off_white_24dp.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ui-user/src/main/res/drawable/ic_person_black_24dp.png" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

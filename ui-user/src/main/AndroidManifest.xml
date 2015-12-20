@@ -8,6 +8,7 @@
 
         <activity android:name=".activity.BookListActivity"/>
         <activity android:name=".activity.MySelfActivity"/>
+        <activity android:name=".activity.BookCollectionTabActivity"/>
     </application>
 
 </manifest>

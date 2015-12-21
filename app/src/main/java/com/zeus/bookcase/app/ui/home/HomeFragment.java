@@ -16,6 +16,7 @@ import com.zeus.bookcase.app.activities.BookFoldableActivity;
 import com.zeus.bookcase.app.activities.BookLoadingActivity;
 import com.zeus.bookcase.app.activities.PreferenceWebActivity;
 import com.zeus.bookcase.app.adpter.LabelRecommendBookListAdapter;
+import com.zeus.common.widget.NonScrollingGridView;
 import com.zeus.ui_user.activity.BookListActivity;
 
 import static com.zeus.bookcase.R.id.label_recommend_book_list;
@@ -30,6 +31,7 @@ public class HomeFragment extends Fragment {
     private ImageView loadimageview;
     private ImageView showImageView;
     private ListView labelRecommendBookList;
+    private NonScrollingGridView geekList;
 
 
     @Nullable
@@ -50,6 +52,7 @@ public class HomeFragment extends Fragment {
         showImageView = (ImageView) view.findViewById(R.id.book_show);
         labelRecommendBookList = (ListView) view.findViewById(label_recommend_book_list);
         labelRecommendBookList.setAdapter(new LabelRecommendBookListAdapter(getActivity()));
+        geekList = (NonScrollingGridView) view.findViewById(R.id.label_recommend_geek_list);
         //解决listview在嵌套下只显示一行的问题
         setListViewHeightBasedOnChildren(labelRecommendBookList);
 

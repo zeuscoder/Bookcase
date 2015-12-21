@@ -14,6 +14,7 @@ import android.widget.ListView;
 import com.zeus.bookcase.R;
 import com.zeus.bookcase.app.activities.BookFoldableActivity;
 import com.zeus.bookcase.app.activities.BookLoadingActivity;
+import com.zeus.bookcase.app.activities.PreferenceWebActivity;
 import com.zeus.bookcase.app.adpter.LabelRecommendBookListAdapter;
 import com.zeus.ui_user.activity.BookListActivity;
 
@@ -55,13 +56,14 @@ public class HomeFragment extends Fragment {
         centerimagview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), BookFoldableActivity.class));
+                startActivity(new Intent(getActivity(), PreferenceWebActivity.class));
             }
         });
         loadimageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), BookLoadingActivity.class));
+                //startActivity(new Intent(getActivity(), BookLoadingActivity.class));
+                startActivity(new Intent(getActivity(), BookFoldableActivity.class));
             }
         });
         showImageView.setOnClickListener(new View.OnClickListener() {

@@ -34,6 +34,7 @@
         <activity android:name=".app.activities.MainActivity" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".app.activities.BookLoadingActivity"/>
         <activity android:name=".app.activities.BookSearchActivity"/>
+        <activity android:name=".app.activities.PreferenceWebActivity"/>
 
         <provider
             android:authorities="com.zeus.bookcase"

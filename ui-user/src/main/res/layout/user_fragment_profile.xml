@@ -15,6 +15,7 @@
         android:clipChildren="false"
         android:clipToPadding="false"
         android:orientation="vertical"
+        android:layout_marginBottom="20dp"
         android:paddingBottom="24dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
@@ -152,7 +153,9 @@
 
     </LinearLayout>
 
-    <com.zeus.common.tabs.MaterialTabHost
+    <include layout="@layout/user__layout_order"/>
+
+<!--    <com.zeus.common.tabs.MaterialTabHost
         android:id="@+id/tabHost"
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -162,6 +165,6 @@
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tabHost" />
+        android:layout_below="@+id/tabHost" />-->
 
 </LinearLayout>

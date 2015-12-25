@@ -7,5 +7,5 @@
     <string name="user_account_deliver">待发货</string>
     <string name="user_account_receive">待收货</string>
     <string name="user_account_comment">待评价</string>
-    <string name="user_account_refund">退款</string>
+    <string name="user_account_refund">退款/售后</string>
 </resources>

@@ -20,7 +20,10 @@ import com.zeus.common.tabs.MaterialTab;
 import com.zeus.common.tabs.MaterialTabHost;
 import com.zeus.common.tabs.MaterialTabListener;
 import com.zeus.ui_user.activity.BookCollectionTabActivity;
+import com.zeus.ui_user.activity.BookListLabelActivity;
 import com.zeus.ui_user.fragment.FirstFragment;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by zeus_coder on 2015/10/31.
@@ -33,6 +36,7 @@ public class MySelfFragment extends Fragment implements View.OnClickListener,Mat
     //private ViewPagerAdapter pagerAdapter;
     private MaterialTabHost tabHost;
     private Resources res;
+    private CircleImageView photo;
 
     @Nullable
     @Override
@@ -58,6 +62,13 @@ public class MySelfFragment extends Fragment implements View.OnClickListener,Mat
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), BookCollectionTabActivity.class));
+            }
+        });
+        photo = (CircleImageView) view.findViewById(R.id.user_profile_photo);
+        photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), BookListLabelActivity.class));
             }
         });
         //res = view.getResources();

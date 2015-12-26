@@ -32,11 +32,11 @@ public class BookCollectionTabActivity extends AppCompatActivity implements Mate
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_book_collection_tab);
-        res = this.getResources();
+        res = getResources();
         // init toolbar (old action bar)
 
-        tabHost = (MaterialTabHost) this.findViewById(R.id.tabHost);
-        pager = (ViewPager) this.findViewById(R.id.pager);
+        tabHost = (MaterialTabHost) findViewById(R.id.tabHost);
+        pager = (ViewPager) findViewById(R.id.pager);
         // init view pager
         pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(pagerAdapter);
@@ -105,7 +105,7 @@ public class BookCollectionTabActivity extends AppCompatActivity implements Mate
     /*
    * It doesn't matter the color of the icons, but they must have solid colors
    */
-    private Drawable getIcon(int position) {
+/*    private Drawable getIcon(int position) {
         switch(position) {
             case 0:
                 return res.getDrawable(R.drawable.ic_person_black_24dp);
@@ -115,5 +115,5 @@ public class BookCollectionTabActivity extends AppCompatActivity implements Mate
                 return res.getDrawable(R.drawable.ic_notifications_off_white_24dp);
         }
         return null;
-    }
+    }*/
 }

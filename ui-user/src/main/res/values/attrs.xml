@@ -15,4 +15,12 @@
         <attr name="border_outside_color" format="color"></attr>
     </declare-styleable>
 
+    <!-- 快递时间线 -->
+    <declare-styleable name="timeline_style" >
+        <attr name="marker" format="color|reference"/>
+        <attr name="line" format="color|reference"/>
+        <attr name="marker_size" format="dimension"/>
+        <attr name="line_size" format="dimension"/>
+    </declare-styleable>
+
 </resources>

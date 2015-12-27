@@ -2,15 +2,66 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="#cccccc"
+    android:background="#383547"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioGroup
+            android:id="@+id/fragment_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#FFFFFF"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <RadioButton
+                android:id="@+id/tab_home"
+                style="@style/market_tab_layout_radio"
+                android:drawableTop="@mipmap/market_tab_new"
+                android:text="上新"
+                android:textColor="#000000"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/tab_market"
+                style="@style/market_tab_layout_radio"
+                android:drawableTop="@mipmap/market_tab_gift"
+                android:text="有礼"
+                android:textColor="#000000"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/tab_case"
+                style="@style/market_tab_layout_radio"
+                android:drawableTop="@mipmap/market_tab_search"
+                android:text="搜素"
+                android:textColor="#000000"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/tab_user"
+                style="@style/market_tab_layout_radio"
+                android:drawableTop="@mipmap/market_tab_support"
+                android:text="客服"
+                android:textColor="#000000"
+                android:layout_weight="1"/>
+
+        </RadioGroup>
+    </FrameLayout>
 
     <ListView
         android:id="@+id/market_list_shop"
         android:dividerHeight="15dp"
+        android:divider="#383547"
+        android:paddingTop="15dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
     </ListView>
 

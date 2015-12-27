@@ -168,12 +168,12 @@ public class SlideShowView extends FrameLayout {
 
             //显示图片的配置
             DisplayImageOptions options = new DisplayImageOptions.Builder()
-                    .showImageOnLoading(R.mipmap.app_home_splash_index)
-                    .showImageOnFail(R.mipmap.app_home_splash_index)
+                    .showImageOnLoading(R.mipmap.app_home_splash_blank)
+                    .showImageOnFail(R.mipmap.app_home_splash_blank)
                     .cacheInMemory(true)
                     .cacheOnDisk(true)
                     .build();
-            imageLoader.displayImage(imageView.getTag() + "", imageView);
+            imageLoader.displayImage(imageView.getTag() + "", imageView, options);
 
             ((ViewPager)container).addView(imageViewsList.get(position));
             return imageViewsList.get(position);

@@ -15,10 +15,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+
 import com.zeus.bookcase.R;
 
 import java.util.ArrayList;
@@ -83,7 +82,7 @@ public class SlideShowView extends FrameLayout {
         super(context, attrs, defStyle);
         this.context = context;
 
-        initImageLoader(context);
+        //initImageLoader(context);
 
         initData();
         if(isAutoPlay){
@@ -131,7 +130,7 @@ public class SlideShowView extends FrameLayout {
             ImageView view =  new ImageView(context);
             view.setTag(imageUrls[i]);
             if(i==0)//给一个默认图
-                view.setBackgroundResource(R.mipmap.appmain_subject_1);
+                view.setBackgroundResource(R.mipmap.app_home_splash_index);
             view.setScaleType(ImageView.ScaleType.FIT_XY);
             imageViewsList.add(view);
 
@@ -167,6 +166,13 @@ public class SlideShowView extends FrameLayout {
         public Object instantiateItem(View container, int position) {
             ImageView imageView = imageViewsList.get(position);
 
+            //显示图片的配置
+            DisplayImageOptions options = new DisplayImageOptions.Builder()
+                    .showImageOnLoading(R.mipmap.app_home_splash_index)
+                    .showImageOnFail(R.mipmap.app_home_splash_index)
+                    .cacheInMemory(true)
+                    .cacheOnDisk(true)
+                    .build();
             imageLoader.displayImage(imageView.getTag() + "", imageView);
 
             ((ViewPager)container).addView(imageViewsList.get(position));
@@ -308,11 +314,17 @@ public class SlideShowView extends FrameLayout {
             try {
                 // 这里一般调用服务端接口获取一组轮播图片，下面是从百度找的几个图片
 
-                imageUrls = new String[]{
+/*                imageUrls = new String[]{
                         "http://image.zcool.com.cn/56/35/1303967876491.jpg",
                         "http://image.zcool.com.cn/59/54/m_1303967870670.jpg",
                         "http://image.zcool.com.cn/47/19/1280115949992.jpg",
                         "http://image.zcool.com.cn/59/11/m_1303967844788.jpg"
+                };*/
+                imageUrls = new String[]{
+                        "http://ww1.sinaimg.cn/mw690/af493ad3jw1ezeauostboj20nm07vq6q.jpg",
+                        "http://ww2.sinaimg.cn/mw690/af493ad3jw1ezeauo0y7yj20nm07vad0.jpg",
+                        "http://ww3.sinaimg.cn/mw690/af493ad3jw1ezeaunitmvj20no07wn0u.jpg",
+                        "http://ww1.sinaimg.cn/mw690/af493ad3jw1ezeaumya2aj20nn07wdit.jpg"
                 };
                 return true;
             } catch (Exception e) {
@@ -330,23 +342,4 @@ public class SlideShowView extends FrameLayout {
         }
     }
 
-    /**
-     * ImageLoader 图片组件初始化
-     *
-     * @param context
-     */
-    public static void initImageLoader(Context context) {
-        // This configuration tuning is custom. You can tune every option, you
-        // may tune some of them,
-        // or you can create default configuration by
-        // ImageLoaderConfiguration.createDefault(this);
-        // method.
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context).threadPriority(Thread.NORM_PRIORITY - 2).denyCacheImageMultipleSizesInMemory().discCacheFileNameGenerator(new Md5FileNameGenerator()).tasksProcessingOrder(QueueProcessingType.LIFO).writeDebugLogs() // Remove
-                // for
-                // release
-                // app
-                .build();
-        // Initialize ImageLoader with configuration.
-        ImageLoader.getInstance().init(config);
-    }
 }

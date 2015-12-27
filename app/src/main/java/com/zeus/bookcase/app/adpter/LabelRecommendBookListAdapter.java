@@ -62,11 +62,11 @@ public class LabelRecommendBookListAdapter extends BaseAdapter{
             viewHolder = (ViewHolder) view.getTag();
         }
         viewHolder.banner.setBackgroundResource(R.mipmap.app_label_recommend_book_banner_bg);
-        viewHolder.title.setText("清新书单");
+        viewHolder.title.setText("IT宅男的周末");
         viewHolder.number.setText("100");
-        viewHolder.item1.setBackgroundResource(R.mipmap.app_label_recommend_book_grid_item);
-        viewHolder.item2.setBackgroundResource(R.mipmap.app_label_recommend_book_grid_item);
-        viewHolder.item3.setBackgroundResource(R.mipmap.app_label_recommend_book_grid_item);
+        viewHolder.item1.setBackgroundResource(R.mipmap.app_label_recommend_book_item1);
+        viewHolder.item2.setBackgroundResource(R.mipmap.app_label_recommend_book_item2);
+        viewHolder.item3.setBackgroundResource(R.mipmap.app_label_recommend_book_item3);
         return view;
     }
 

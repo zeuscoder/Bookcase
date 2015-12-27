@@ -8,7 +8,7 @@
     <LinearLayout
         android:id="@+id/layout_recommend_banner"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="80dp"
         android:background="#FFFFFF"
         android:orientation="vertical"
         android:padding="10dp"
@@ -20,8 +20,8 @@
             android:layout_height="wrap_content"
             android:text="文艺的世界"
             android:textColor="#333333"
-            android:textSize="20sp"
-            android:layout_marginBottom="5dp"/>
+            android:textSize="24sp"
+            android:layout_marginBottom="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,15 +33,16 @@
                 android:id="@+id/tv_label_recommend_list_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:text="200"
-                android:textColor="#333333"
-                android:textSize="16sp"/>
+                android:textColor="#666666"
+                android:textSize="13sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="人看过"
-                android:textColor="#333333"
-                android:textSize="16sp"/>
+                android:textColor="#666666"
+                android:textSize="13sp"/>
 
         </LinearLayout>
 
@@ -50,7 +51,7 @@
     <LinearLayout
         android:id="@+id/label_recommend_grid_list"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="160dp"
         android:orientation="horizontal">
         <ImageView
             android:id="@+id/label_recommend_book_grid_item1"

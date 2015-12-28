@@ -17,8 +17,12 @@ import com.zeus.bookcase.app.activities.BookLoadingActivity;
 import com.zeus.bookcase.app.activities.PreferenceWebActivity;
 import com.zeus.bookcase.app.adpter.LabelRecommendBookListAdapter;
 import com.zeus.bookcase.app.adpter.LabelRecommendGeekListAdapter;
+import com.zeus.bookcase.app.model.Geek;
 import com.zeus.common.widget.NonScrollingGridView;
 import com.zeus.ui_user.activity.BookListActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.zeus.bookcase.R.id.label_recommend_book_list;
 
@@ -34,6 +38,8 @@ public class HomeFragment extends Fragment {
     private ListView labelRecommendBookList;
     private NonScrollingGridView labelRecommendGeekList;
 
+    private List<Geek> geeks = new ArrayList<>();
+
 
     @Nullable
     @Override
@@ -48,15 +54,10 @@ public class HomeFragment extends Fragment {
         view.setFocusable(true);
         view.setFocusableInTouchMode(true);
         view.requestFocus();
-        centerimagview = (ImageView) view.findViewById(R.id.centerimagview);
-        loadimageview = (ImageView) view.findViewById(R.id.book_loading);
-        showImageView = (ImageView) view.findViewById(R.id.book_show);
-        labelRecommendBookList = (ListView) view.findViewById(label_recommend_book_list);
-        labelRecommendBookList.setAdapter(new LabelRecommendBookListAdapter(getActivity()));
-        labelRecommendGeekList = (NonScrollingGridView) view.findViewById(R.id.label_recommend_geek_list);
-        labelRecommendGeekList.setAdapter(new LabelRecommendGeekListAdapter(getActivity()));
-        //解决listview在嵌套下只显示一行的问题
-        setListViewHeightBasedOnChildren(labelRecommendBookList);
+        initView(view);
+        initBookList(view);
+        initGeekList(view);
+
 
         centerimagview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +78,37 @@ public class HomeFragment extends Fragment {
                 startActivity(new Intent(getActivity(), BookListActivity.class));
             }
         });
+    }
+
+    private void initView(View view) {
+        centerimagview = (ImageView) view.findViewById(R.id.centerimagview);
+        loadimageview = (ImageView) view.findViewById(R.id.book_loading);
+        showImageView = (ImageView) view.findViewById(R.id.book_show);
+    }
+
+    private void initGeekList(View view) {
+        int[] photos = { R.mipmap.app_home_geek_photo,
+                R.mipmap.app_home_geek_photo2,
+                R.mipmap.app_home_geek_photo3,
+                R.mipmap.app_home_geek_photo4,
+                R.mipmap.app_home_geek_photo5,
+                R.mipmap.app_home_geek_photo6 };
+        for(int i = 0;i < 6;i++) {
+            Geek geek = new Geek();
+            geek.setName("Zeus" + i);
+            geek.setTitle("帅气达人" + i);
+            geek.setPhoto(photos[i]);
+            geeks.add(geek);
+        }
+        labelRecommendGeekList = (NonScrollingGridView) view.findViewById(R.id.label_recommend_geek_list);
+        labelRecommendGeekList.setAdapter(new LabelRecommendGeekListAdapter(getActivity(),geeks));
+    }
+
+    private void initBookList(View view) {
+        labelRecommendBookList = (ListView) view.findViewById(label_recommend_book_list);
+        labelRecommendBookList.setAdapter(new LabelRecommendBookListAdapter(getActivity()));
+        //解决listview在嵌套下只显示一行的问题
+        setListViewHeightBasedOnChildren(labelRecommendBookList);
     }
 
     public void setListViewHeightBasedOnChildren(ListView listView) {

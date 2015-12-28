@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.zeus.bookcase.R;
+import com.zeus.bookcase.app.model.Geek;
 
 import java.util.List;
 
@@ -19,11 +20,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class LabelRecommendGeekListAdapter extends BaseAdapter {
 
-    private List geeks;
+    private List<Geek> geeks;
     private Context context;
 
-    public LabelRecommendGeekListAdapter(Context context) {
+    public LabelRecommendGeekListAdapter(Context context, List geeks) {
         this.context = context;
+        this.geeks = geeks;
     }
 
     @Override
@@ -56,9 +58,11 @@ public class LabelRecommendGeekListAdapter extends BaseAdapter {
             view = convertView;
             viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.photo.setBackgroundResource(R.mipmap.app_home_geek_photo);
-        viewHolder.name.setText("Zeus");
-        viewHolder.title.setText("帅气达人");
+        Geek geek = geeks.get(position);
+        //viewHolder.photo.setBackgroundResource(geek.getPhoto());
+        viewHolder.photo.setImageResource(geek.getPhoto());
+        viewHolder.name.setText(geek.getName());
+        viewHolder.title.setText(geek.getTitle());
         return view;
     }
 

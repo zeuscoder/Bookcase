@@ -19,9 +19,15 @@ import android.widget.TextView;
 import com.zeus.common.tabs.MaterialTab;
 import com.zeus.common.tabs.MaterialTabHost;
 import com.zeus.common.tabs.MaterialTabListener;
+import com.zeus.common.widget.NonScrollingGridView;
 import com.zeus.ui_user.activity.BookCollectionTabActivity;
 import com.zeus.ui_user.activity.BookListLabelActivity;
+import com.zeus.ui_user.adapter.UserFunctionAdapter;
 import com.zeus.ui_user.fragment.FirstFragment;
+import com.zeus.ui_user.model.Function;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -37,6 +43,9 @@ public class MySelfFragment extends Fragment implements View.OnClickListener,Mat
     private MaterialTabHost tabHost;
     private Resources res;
     private CircleImageView photo;
+    private NonScrollingGridView functionGridView;
+
+    private List<Function> functions = new ArrayList<>();
 
     @Nullable
     @Override
@@ -64,6 +73,7 @@ public class MySelfFragment extends Fragment implements View.OnClickListener,Mat
                 startActivity(new Intent(getActivity(), BookCollectionTabActivity.class));
             }
         });
+
         photo = (CircleImageView) view.findViewById(R.id.user_profile_photo);
         photo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,11 +81,31 @@ public class MySelfFragment extends Fragment implements View.OnClickListener,Mat
                 startActivity(new Intent(getActivity(), BookListLabelActivity.class));
             }
         });
+
+        int[] icons = { R.mipmap.user_function_item1,
+                R.mipmap.user_function_item2,
+                R.mipmap.user_function_item3,
+                R.mipmap.user_function_item4,
+                R.mipmap.user_function_item5,
+                R.mipmap.user_function_item6,
+                R.mipmap.user_function_item7,
+                R.mipmap.user_function_item8 };
+        for(int i = 0;i < 8;i++) {
+            Function function = new Function();
+            function.setName("收藏夹" + i);
+            function.setTitle("帅气达人" + i);
+            function.setIcon(icons[i]);
+            functions.add(function);
+        }
+        functionGridView = (NonScrollingGridView) view.findViewById(R.id.user_function_list);
+        functionGridView.setAdapter(new UserFunctionAdapter(getActivity(), functions));
+
+
         //res = view.getResources();
         // init toolbar (old action bar)
 
-        tabHost = (MaterialTabHost) view.findViewById(R.id.tabHost);
-        pager = (ViewPager) view.findViewById(R.id.pager);
+        //tabHost = (MaterialTabHost) view.findViewById(R.id.tabHost);
+        //pager = (ViewPager) view.findViewById(R.id.pager);
         // init view pager   getChildFragmentManager会报错
  /*       pagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
         pager.setAdapter(pagerAdapter);

@@ -55,11 +55,14 @@
         </RadioGroup>
     </FrameLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#cccccc"/>
     <ListView
         android:id="@+id/market_list_shop"
         android:dividerHeight="15dp"
         android:divider="#383547"
-        android:paddingTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

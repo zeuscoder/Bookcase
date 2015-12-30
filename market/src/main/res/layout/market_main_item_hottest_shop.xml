@@ -59,17 +59,17 @@
         <ImageView
             android:id="@+id/market_shop_book_item1"
             android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_height="130dp"
             android:layout_weight="1"/>
         <ImageView
             android:id="@+id/market_shop_book_item2"
             android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_height="130dp"
             android:layout_weight="1"/>
         <ImageView
             android:id="@+id/market_shop_book_item3"
             android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_height="130dp"
             android:layout_weight="1"/>
     </LinearLayout>
 

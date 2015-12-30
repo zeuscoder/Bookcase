@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <include layout="@layout/app__activity_topbar"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#CCCCCC"
+            />
+
+        <LinearLayout
+            android:id="@+id/tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/guillotine_background"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:showDividers="middle"
+                android:divider="@mipmap/app_home_activity_divider"
+                android:orientation="horizontal">
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:drawableTop="@mipmap/app_book_purchase_icon1"
+                    android:text="客服"
+                    android:textColor="#FFFFFF"
+                    android:padding="2dp"
+                    />
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:drawableTop="@mipmap/app_book_purchase_icon2"
+                    android:text="店铺"
+                    android:textColor="#FFFFFF"
+                    android:padding="2dp"
+                    />
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:drawableTop="@mipmap/app_book_purchase_icon3"
+                    android:text="收藏"
+                    android:textColor="#FFFFFF"
+                    android:padding="2dp"
+                    />
+            </LinearLayout>
+
+            <TextView
+              android:layout_width="0dp"
+              android:layout_height="55dp"
+              android:layout_weight="2"
+              android:gravity="center"
+              android:text="加入购物车"
+              android:textSize="18sp"
+              android:textColor="#FFFFFF"
+              android:background="#FF6600"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="立即购买"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="#FF3333"/>
+
+        </LinearLayout>
+    </LinearLayout>

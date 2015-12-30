@@ -31,6 +31,16 @@ import butterknife.ButterKnife;
  */
 public class FoldablePhotoAdapter extends RecyclerView.Adapter<FoldablePhotoAdapter.PhotoViewHolder> {
 
+    private String[] mTextset = { "互联网",
+            "心理学",
+            "传记",
+            "体育",
+            "社会科学",
+            "自然",
+            "健身",
+            "小说",
+            "其他",};
+
     private String[] mDataSet;
     private Map<Integer, Boolean> mFoldStates = new HashMap<>();
     private Context mContext;
@@ -52,7 +62,8 @@ public class FoldablePhotoAdapter extends RecyclerView.Adapter<FoldablePhotoAdap
         // Bind data
         Picasso.with(holder.mFoldableLayout.getContext()).load(path).into(holder.mImageViewCover);
         Picasso.with(holder.mFoldableLayout.getContext()).load(path).into(holder.mImageViewDetail);
-        holder.mTextViewCover.setText(mDataSet[position].replace(".jpg", ""));
+        //holder.mTextViewCover.setText(mDataSet[position].replace(".jpg", ""));
+        holder.mTextViewCover.setText(mTextset[position]);
 
         // Bind state
         if (mFoldStates.containsKey(position)) {
@@ -72,11 +83,11 @@ public class FoldablePhotoAdapter extends RecyclerView.Adapter<FoldablePhotoAdap
         holder.mButtonShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+/*                Intent shareIntent = new Intent(Intent.ACTION_SEND);
                 shareIntent.setType("image/jpg");
                 Uri uri = Uri.parse(path);
                 shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
-                mContext.startActivity(Intent.createChooser(shareIntent, "Share image using"));
+                mContext.startActivity(Intent.createChooser(shareIntent, "Share image using"));*/
             }
         });
 

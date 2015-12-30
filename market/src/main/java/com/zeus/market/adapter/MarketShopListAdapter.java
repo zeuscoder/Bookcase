@@ -60,9 +60,9 @@ public class MarketShopListAdapter extends BaseAdapter{
         viewHolder.name.setText("Zeus旗舰店");
         viewHolder.time.setText("今天 0点45分");
         viewHolder.description.setText("粉丝特权 最新最热的书单");
-        viewHolder.item1.setBackgroundResource(R.mipmap.ads_2);
-        viewHolder.item2.setBackgroundResource(R.mipmap.ads_3);
-        viewHolder.item3.setBackgroundResource(R.mipmap.ads_4);
+        viewHolder.item1.setBackgroundResource(R.mipmap.market_shop_book_item1);
+        viewHolder.item2.setBackgroundResource(R.mipmap.market_shop_book_item2);
+        viewHolder.item3.setBackgroundResource(R.mipmap.market_shop_book_item3);
         return view;
     }
 

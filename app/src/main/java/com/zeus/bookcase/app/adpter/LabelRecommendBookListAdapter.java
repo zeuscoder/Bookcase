@@ -1,6 +1,7 @@
 package com.zeus.bookcase.app.adpter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zeus.bookcase.R;
+import com.zeus.bookcase.app.activities.BookPurchaseDetailActivity;
 import com.zeus.common.NonGridViewAdapter;
 import com.zeus.common.widget.NonScrollingGridView;
 
@@ -44,7 +46,7 @@ public class LabelRecommendBookListAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View view;
         ViewHolder viewHolder;
         if(convertView == null) {
@@ -67,6 +69,12 @@ public class LabelRecommendBookListAdapter extends BaseAdapter{
         viewHolder.item1.setBackgroundResource(R.mipmap.app_label_recommend_book_item1);
         viewHolder.item2.setBackgroundResource(R.mipmap.app_label_recommend_book_item2);
         viewHolder.item3.setBackgroundResource(R.mipmap.app_label_recommend_book_item3);
+        viewHolder.item1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context, BookPurchaseDetailActivity.class));
+            }
+        });
         return view;
     }
 

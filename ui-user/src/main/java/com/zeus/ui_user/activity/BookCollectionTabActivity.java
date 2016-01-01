@@ -84,18 +84,22 @@ public class BookCollectionTabActivity extends AppCompatActivity implements Mate
 
         @Override
         public int getCount() {
-            return 3;
+            return 5;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "订单";
+                    return "全部";
                 case 1:
-                    return "购物车";
+                    return "待付款";
                 case 2:
-                    return "收藏夹";
+                    return "待发货";
+                case 3:
+                    return "待收货";
+                case 4:
+                    return "待评价";
                 default:
                     return null;
             }

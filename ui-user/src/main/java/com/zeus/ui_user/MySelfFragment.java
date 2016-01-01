@@ -2,29 +2,27 @@ package com.zeus.ui_user;
 
 import android.app.Fragment;
 import android.content.Intent;
-import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 //import android.support.v4.app.FragmentActivity;
-import android.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.zeus.common.tabs.MaterialTab;
-import com.zeus.common.tabs.MaterialTabHost;
-import com.zeus.common.tabs.MaterialTabListener;
 import com.zeus.common.widget.NonScrollingGridView;
 import com.zeus.ui_user.activity.BookCollectionTabActivity;
 import com.zeus.ui_user.activity.BookListLabelActivity;
-import com.zeus.ui_user.adapter.UserFunctionAdapter;
-import com.zeus.ui_user.fragment.FirstFragment;
+import com.zeus.ui_user.interfaces.OnDragStateChangeListener;
 import com.zeus.ui_user.model.Function;
+import com.zeus.ui_user.view.InboxBackgroundScrollView;
+import com.zeus.ui_user.view.InboxLayoutBase;
+import com.zeus.ui_user.view.InboxLayoutListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,16 +32,16 @@ import de.hdodenhof.circleimageview.CircleImageView;
 /**
  * Created by zeus_coder on 2015/10/31.
  */
-public class MySelfFragment extends Fragment implements View.OnClickListener,MaterialTabListener {
+public class MySelfFragment extends Fragment {
 
     private Button btn;
+    private TextView allOrder;
 
     private ViewPager pager;
-    //private ViewPagerAdapter pagerAdapter;
-    private MaterialTabHost tabHost;
-    private Resources res;
     private CircleImageView photo;
     private NonScrollingGridView functionGridView;
+
+    private InboxLayoutListView inboxLayoutListView;
 
     private List<Function> functions = new ArrayList<>();
 
@@ -56,7 +54,7 @@ public class MySelfFragment extends Fragment implements View.OnClickListener,Mat
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initUI(view);
+        initUIView(view);
     }
 
     @Override
@@ -65,7 +63,7 @@ public class MySelfFragment extends Fragment implements View.OnClickListener,Mat
         //fillView();
     }
 
-    private void initUI(View view) {
+    private void initUIView(View view) {
         btn = (Button) view.findViewById(R.id.btnFollow);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +80,112 @@ public class MySelfFragment extends Fragment implements View.OnClickListener,Mat
             }
         });
 
+        allOrder = (TextView) view.findViewById(R.id.user_account_all_order);
+        allOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), BookCollectionTabActivity.class));
+            }
+        });
+        //initFunctionView(view);
+        initScrollView(view);
+    }
+
+    private void initScrollView(View view) {
+        final InboxBackgroundScrollView inboxBackgroundScrollView = (InboxBackgroundScrollView) view.findViewById(R.id.user_profile_scroll_view);
+        inboxLayoutListView = (InboxLayoutListView) view.findViewById(R.id.inboxlayout);
+        inboxLayoutListView.setBackgroundScrollView(inboxBackgroundScrollView);//绑定scrollview
+        inboxLayoutListView.setCloseDistance(50);
+        inboxLayoutListView.setOnDragStateChangeListener(new OnDragStateChangeListener() {
+            @Override
+            public void dragStateChange(InboxLayoutBase.DragState state) {
+                switch (state) {
+                    case CANCLOSE:
+                        //设置标题
+                        break;
+                    case CANNOTCLOSE:
+                        //设置标题
+                        break;
+                }
+            }
+        });
+        inboxLayoutListView.setAdapter(new BaseAdapter() {
+            @Override
+            public int getCount() {
+                return 15;
+            }
+
+            @Override
+            public Object getItem(int position) {
+                return null;
+            }
+
+            @Override
+            public long getItemId(int position) {
+                return position;
+            }
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                LayoutInflater inflater = getActivity().getLayoutInflater();
+                View view = inflater.inflate(R.layout.user_setting_item, null);
+                return view;
+            }
+        });
+        initItem(view);
+    }
+
+    private void initItem(View view) {
+        final LinearLayout dingdan = (LinearLayout)view.findViewById(R.id.ding_dan);
+        dingdan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inboxLayoutListView.openWithAnim(dingdan);
+            }
+        });
+
+        final LinearLayout yuding = (LinearLayout)view.findViewById(R.id.yuding);
+        yuding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inboxLayoutListView.openWithAnim(yuding);
+            }
+        });
+
+        final LinearLayout tuijian = (LinearLayout)view.findViewById(R.id.tuijian);
+        tuijian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inboxLayoutListView.openWithAnim(tuijian);
+            }
+        });
+
+        final LinearLayout member = (LinearLayout)view.findViewById(R.id.member);
+        member.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inboxLayoutListView.openWithAnim(member);
+            }
+        });
+
+        final LinearLayout choujiang = (LinearLayout)view.findViewById(R.id.choujiang);
+        choujiang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inboxLayoutListView.openWithAnim(choujiang);
+            }
+        });
+
+        final LinearLayout diyongquan = (LinearLayout)view.findViewById(R.id.diyongquan);
+        diyongquan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inboxLayoutListView.openWithAnim(diyongquan);//bottom item set true
+            }
+        });
+    }
+
+    private void initFunctionView(View view) {
         int[] icons = { R.mipmap.user_function_item1,
                 R.mipmap.user_function_item2,
                 R.mipmap.user_function_item3,
@@ -97,50 +201,8 @@ public class MySelfFragment extends Fragment implements View.OnClickListener,Mat
             function.setIcon(icons[i]);
             functions.add(function);
         }
-        functionGridView = (NonScrollingGridView) view.findViewById(R.id.user_function_list);
-        functionGridView.setAdapter(new UserFunctionAdapter(getActivity(), functions));
-
-
-        //res = view.getResources();
-        // init toolbar (old action bar)
-
-        //tabHost = (MaterialTabHost) view.findViewById(R.id.tabHost);
-        //pager = (ViewPager) view.findViewById(R.id.pager);
-        // init view pager   getChildFragmentManager会报错
- /*       pagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
-        pager.setAdapter(pagerAdapter);
-        pager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                // when user do a swipe the selected tab change
-                tabHost.setSelectedNavigationItem(position);
-            }
-        });
-        // insert all tabs from pagerAdapter data
-        for (int i = 0; i < pagerAdapter.getCount(); i++) {
-            tabHost.addTab(
-                    tabHost.newTab()
-                            .setText(pagerAdapter.getPageTitle(i))
-                            .setTabListener(this)
-            );
-        }*/
-
-        /*调试用的，可以删掉*/
-/*        tabHost.addTab(
-                tabHost.newTab()
-                        .setText((CharSequence)"hjk")
-                        .setTabListener(this)
-        );
-        tabHost.addTab(
-                tabHost.newTab()
-                        .setText((CharSequence)"dah")
-                        .setTabListener(this)
-        );
-        tabHost.addTab(
-                tabHost.newTab()
-                        .setText((CharSequence)"dsah")
-                        .setTabListener(this)
-        );*/
+        //functionGridView = (NonScrollingGridView) view.findViewById(R.id.user_function_list);
+        //functionGridView.setAdapter(new UserFunctionAdapter(getActivity(), functions));
     }
 
 /*    private void fillView() {
@@ -162,59 +224,10 @@ public class MySelfFragment extends Fragment implements View.OnClickListener,Mat
         }
     }*/
 
-    @Override
-    public void onTabSelected(MaterialTab tab) {
-        // when the tab is clicked the pager swipe content to the tab position
-        pager.setCurrentItem(tab.getPosition());
-    }
-
-    @Override
-    public void onTabReselected(MaterialTab tab) {
-
-    }
-
-    @Override
-    public void onTabUnselected(MaterialTab tab) {
-
-    }
-
-/*    private class ViewPagerAdapter extends FragmentPagerAdapter {
-
-*//*        public ViewPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }*//*
-
-        public android.support.v4.app.Fragment getItem(int num) {
-            return new FirstFragment();
-        }
-
-        @Override
-        public int getCount() {
-            return 3;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "订单";
-                case 1:
-                    return "购物车";
-                case 2:
-                    return "收藏夹";
-                default:
-                    return null;
-            }
-        }
-    }*/
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
 }

@@ -55,6 +55,19 @@
     <file url="file://$PROJECT_DIR$/ui-case/src/main/res/mipmap-hdpi/icn_5.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ui-case/src/main/res/mipmap-hdpi/icn_close.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ui-case/src/main/res/mipmap-hdpi/photo.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ui-user/src/main/res/drawable-hdpi/card_avatar_bar.9.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ui-user/src/main/res/drawable/card_avatar_bar.9.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ui-user/src/main/res/drawable/card_avatar_bar.9.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ui-user/src/main/res/mipmap-hdpi/user_item_new_flag.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ui-user/src/main/res/mipmap-xhdpi/card_avatar_bar.9.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ui-user/src/main/res/mipmap-xhdpi/card_background_white.9.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ui-user/src/main/res/mipmap-xhdpi/ic_global_arrow_right_2px.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ui-user/src/main/res/mipmap-xhdpi/ic_group_order_enable.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ui-user/src/main/res/mipmap-xhdpi/ic_order_account_recommend_enable.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ui-user/src/main/res/mipmap-xhdpi/ic_order_lottery_enable.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ui-user/src/main/res/mipmap-xhdpi/ic_order_voucher_enabled.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ui-user/src/main/res/mipmap-xhdpi/ic_point.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ui-user/src/main/res/mipmap-xhdpi/ic_reserve_order_enable.png" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

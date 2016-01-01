@@ -3,12 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/guillotine_background_dark"
+    android:background="#FFFFFF"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#CCCCCC"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,13 +19,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="我的订单"
-            android:textColor="#FFFFFF"
+            android:textColor="#333333"
             android:textSize="15sp"/>
         <TextView
+            android:id="@+id/user_account_all_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="查看全部订单"
-            android:textColor="#cccccc"
+            android:drawableRight="@mipmap/ic_global_arrow_right_2px"
+            android:drawablePadding="5dp"
+            android:textColor="#999999"
             android:textSize="13sp"/>
         <ImageView
             android:layout_width="wrap_content"
@@ -43,7 +43,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/user_account_deliver2"
+            android:id="@+id/user_account_pay"
+            style="@style/layout_btn_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/user_account_refund"
+            android:text="@string/user_account_pay"/>
+        <Button
+            android:id="@+id/user_account_deliver"
             style="@style/layout_btn_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,7 +59,7 @@
             android:drawableTop="@mipmap/user_account_deliver"
             android:text="@string/user_account_deliver"/>
         <Button
-            android:id="@+id/user_account_receive2"
+            android:id="@+id/user_account_receive"
             style="@style/layout_btn_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,7 +67,7 @@
             android:drawableTop="@mipmap/user_account_receive"
             android:text="@string/user_account_receive"/>
         <Button
-            android:id="@+id/user_account_command2"
+            android:id="@+id/user_account_command"
             style="@style/layout_btn_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,7 +75,7 @@
             android:drawableTop="@mipmap/user_account_command"
             android:text="@string/user_account_comment"/>
         <Button
-            android:id="@+id/user_account_refund2"
+            android:id="@+id/user_account_refund"
             style="@style/layout_btn_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,8 +83,5 @@
             android:drawableTop="@mipmap/user_account_refund"
             android:text="@string/user_account_refund"/>
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#CCCCCC"/>
+
 </LinearLayout>

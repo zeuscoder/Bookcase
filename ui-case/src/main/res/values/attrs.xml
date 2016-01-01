@@ -7,4 +7,11 @@
         <attr name="yOffsetStep" format="dimension" />
     </declare-styleable>
 
+    <!-- 图书馆滚动Imageview -->
+    <declare-styleable name="BezelImageView">
+        <attr name="maskDrawable" format="reference" />
+        <attr name="borderDrawable" format="reference" />
+        <attr name="desaturateOnPress" format="boolean" />
+    </declare-styleable>
+
 </resources>

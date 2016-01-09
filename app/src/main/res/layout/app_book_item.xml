@@ -4,26 +4,37 @@
     android:background="#fff"
     android:layout_width="match_parent"
     android:layout_height="130dp"
-    android:padding="15dp">
+    android:padding="10dp">
 
     <ImageView
         android:layout_width="70dp"
         android:layout_height="100dp"
         android:background="@mipmap/app__intro_01"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginRight="15dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginRight="5dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="#333"
-            android:text="不可思议"/>
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text="包邮 小王子 软精装珍藏版 买中文版送英文版 买一送一 数量有限"/>
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#666"
+            android:text="包邮 广州"/>
 
         <TextView
             android:layout_marginTop="10dp"
@@ -31,15 +42,7 @@
             android:layout_height="wrap_content"
             android:textSize="15sp"
             android:textColor="#666"
-            android:text="评分：8.5"/>
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textColor="#666"
-            android:text="作者：吕子谋"/>
+            android:text=""/>
     </LinearLayout>
 
 </LinearLayout>

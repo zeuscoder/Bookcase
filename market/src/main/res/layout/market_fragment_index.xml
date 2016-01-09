@@ -61,7 +61,7 @@
         android:background="#cccccc"/>
     <ListView
         android:id="@+id/market_list_shop"
-        android:dividerHeight="15dp"
+        android:dividerHeight="5dp"
         android:divider="#383547"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

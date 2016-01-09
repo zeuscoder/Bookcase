@@ -9,4 +9,9 @@
     <string name="user_account_comment">待评价</string>
     <string name="user_account_refund">退款/售后</string>
     <string name="user_account_pay">代付款</string>
+    <string name="error_title_damn">Damn</string>
+    <string name="error_subtitle_failed_one_more_time">Failed one more time</string>
+    <string name="info_retrying">Retrying</string>
+    <string name="error_view_oops">Oops</string>
+    <string name="error_view_retry">RETRY</string>
 </resources>

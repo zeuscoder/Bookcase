@@ -1,76 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="#ffffff"
-    android:padding="10dp"
+    android:background="#383547"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/market_shop_photo"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@mipmap/ads_1"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/market_shop_photo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@mipmap/ads_1"/>
+
+            <TextView
+                android:id="@+id/market_shop_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/market_shop_photo"
+                android:layout_marginLeft="15dp"
+                android:text="zeus旗舰店"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/market_shop_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/market_shop_photo"
+                android:layout_below="@+id/market_shop_name"
+                android:layout_alignBottom="@+id/market_shop_photo"
+                android:layout_alignLeft="@+id/market_shop_name"
+                android:text="123456"
+                android:textSize="10sp"
+                android:textColor="#999999"/>
+        </RelativeLayout>
 
         <TextView
-            android:id="@+id/market_shop_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/market_shop_photo"
-            android:layout_marginLeft="15dp"
-            android:text="zeus旗舰店"
-            android:textSize="14sp"
-            android:textColor="#000000"/>
-
-        <TextView
-            android:id="@+id/market_shop_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/market_shop_description"
             android:layout_marginTop="10dp"
-            android:layout_toRightOf="@+id/market_shop_photo"
-            android:layout_below="@+id/market_shop_name"
-            android:layout_alignBottom="@+id/market_shop_photo"
-            android:layout_alignLeft="@+id/market_shop_name"
-            android:text="123456"
-            android:textSize="10sp"
-            android:textColor="#999999"/>
-    </RelativeLayout>
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="最新最好最贴心的书!"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            />
 
-    <TextView
-        android:id="@+id/market_shop_description"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="最新最好最贴心的书!"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:showDividers="middle"
-        android:divider="@mipmap/market_shop_book_divider"
-        android:orientation="horizontal">
-        <ImageView
-            android:id="@+id/market_shop_book_item1"
-            android:layout_width="0dp"
-            android:layout_height="130dp"
-            android:layout_weight="1"/>
-        <ImageView
-            android:id="@+id/market_shop_book_item2"
-            android:layout_width="0dp"
-            android:layout_height="130dp"
-            android:layout_weight="1"/>
-        <ImageView
-            android:id="@+id/market_shop_book_item3"
-            android:layout_width="0dp"
-            android:layout_height="130dp"
-            android:layout_weight="1"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:showDividers="middle"
+            android:divider="@mipmap/market_shop_book_divider"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/market_shop_book_item1"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/market_shop_book_item2"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/market_shop_book_item3"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

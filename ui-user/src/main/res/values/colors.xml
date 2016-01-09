@@ -37,4 +37,14 @@
 
     <!--首页item -->
     <color name="line_color">#DDDDDD</color>
+
+    <!--错误View -->
+    <color name="error_view_text">#656565</color>
+    <color name="error_view_text_dark">#CC000000</color>
+    <color name="error_view_text_light">#858585</color>
+    <color name="error_view_retry_button_background">#30000000</color>
+    <color name="error_view_retry_button_background_stroke">#50000000</color>
+    <color name="apptheme_primary">#3F51B5</color>
+    <color name="apptheme_primary_dark">#303F9F</color>
+    <color name="apptheme_accent">#FF4081</color>
 </resources>

@@ -1,6 +1,7 @@
 package com.zeus.bookcase.app.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Handler;
@@ -19,6 +20,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import com.zeus.bookcase.R;
+import com.zeus.bookcase.app.activities.PreferenceWebActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -174,6 +176,14 @@ public class SlideShowView extends FrameLayout {
                     .cacheOnDisk(true)
                     .build();
             imageLoader.displayImage(imageView.getTag() + "", imageView, options);
+
+            imageView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //startActivity(new Intent(getActivity(), PreferenceWebActivity.class));
+                    getContext().startActivity(new Intent(getContext(),PreferenceWebActivity.class));
+                }
+            });
 
             ((ViewPager)container).addView(imageViewsList.get(position));
             return imageViewsList.get(position);

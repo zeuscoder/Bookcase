@@ -10,7 +10,7 @@ import com.zeus.bookcase.R;
 /**
  * Created by zeus_coder on 2015/12/21.
  */
-public class PreferenceWebActivity extends Activity {
+public class PreferenceWebActivity extends BaseActivity {
 
     private WebView web;
     private WebSettings wSet;
@@ -19,7 +19,7 @@ public class PreferenceWebActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_activity_preferentail_web);
-
+        initTopButton(R.string.activity_book_recommend, R.mipmap.app_arrow_back, 0);
         web = (WebView) findViewById(R.id.web_preference);
         wSet = web.getSettings();
         wSet.setJavaScriptEnabled(true);

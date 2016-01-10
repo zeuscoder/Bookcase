@@ -14,4 +14,7 @@
     <string name="info_retrying">Retrying</string>
     <string name="error_view_oops">Oops</string>
     <string name="error_view_retry">RETRY</string>
+
+    <string name="activity_shopping_cart">购物车</string>
+    <string name="activity_favorites">收藏夹</string>
 </resources>

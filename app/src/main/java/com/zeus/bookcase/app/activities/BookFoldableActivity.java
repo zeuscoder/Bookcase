@@ -26,7 +26,7 @@ public class BookFoldableActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app__book_show_list);
-        initTopButton(R.string.app_name, 0, 0);
+        initTopButton(R.string.activity_book_list, R.mipmap.app_arrow_back, 0);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
 

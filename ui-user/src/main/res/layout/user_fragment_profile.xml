@@ -55,14 +55,14 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Zeus Coder"
+                                android:text="子谋style"
                                 android:textColor="#ffffff"
                                 android:textSize="24sp" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="\@jsmith"
+                                android:text="黄金会员"
                                 android:textColor="#bbbbbb"
                                 android:textSize="12sp" />
 
@@ -80,7 +80,7 @@
                                 android:layout_marginRight="24dp"
                                 android:layout_marginTop="8dp"
                                 android:background="@drawable/user_btn_following"
-                                android:text="following"
+                                android:text="设置"
                                 android:textColor="#ffffff"
                                 android:textSize="12sp" />
 
@@ -96,6 +96,7 @@
                         android:layout_marginTop="16dp">
 
                         <LinearLayout
+                            android:id="@+id/user_favorites"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -105,19 +106,20 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="1167"
+                                android:text="5"
                                 android:textColor="#ffffff"
                                 android:textSize="20sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="posts"
+                                android:text="收藏夹"
                                 android:textColor="#ffffff"
                                 android:textSize="12sp" />
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/user_shopping_cart"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -127,19 +129,20 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="396"
+                                android:text="10"
                                 android:textColor="#ffffff"
                                 android:textSize="20sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="followers"
+                                android:text="购物车"
                                 android:textColor="#ffffff"
                                 android:textSize="12sp" />
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/user_welfare"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -149,14 +152,14 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="485"
+                                android:text="25"
                                 android:textColor="#ffffff"
                                 android:textSize="20sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="following"
+                                android:text="福利社"
                                 android:textColor="#ffffff"
                                 android:textSize="12sp" />
                         </LinearLayout>
@@ -194,27 +197,27 @@
                     android:layout_height="0.5dp"
                     android:background="#999999"/>-->
                 <LinearLayout
-                    android:id="@+id/ding_dan"
+                    android:id="@+id/zichan"
                     android:layout_marginTop="10dp"
                     style="@style/UserMainItemLayout">
                     <TextView
                         style="@style/UserMainItemTextTitle"
-                        android:text="团购订单"
+                        android:text="我的资产"
                         android:drawableLeft="@mipmap/ic_group_order_enable"/>
                     <TextView
                         style="@style/UserMainItemTextDsrc"
-                        android:text="4" />
+                        android:text="0" />
                 </LinearLayout>
                 <LinearLayout
-                    android:id="@+id/yuding"
+                    android:id="@+id/jifen"
                     style="@style/UserMainItemLayout">
                     <TextView
                         style="@style/UserMainItemTextTitle"
-                        android:text="预订订单"
+                        android:text="我的积分"
                         android:drawableLeft="@mipmap/ic_reserve_order_enable"/>/>
                     <TextView
                         style="@style/UserMainItemTextDsrc"
-                        android:text="0" />
+                        android:text="1000" />
                 </LinearLayout>
 
                 <LinearLayout android:id="@+id/tuijian"

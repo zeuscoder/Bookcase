@@ -18,6 +18,9 @@ import android.widget.TextView;
 import com.zeus.common.widget.NonScrollingGridView;
 import com.zeus.ui_user.activity.BookCollectionTabActivity;
 import com.zeus.ui_user.activity.BookListLabelActivity;
+import com.zeus.ui_user.activity.UserFavoritesActivity;
+import com.zeus.ui_user.activity.UserShoppingCartActivity;
+import com.zeus.ui_user.activity.UserWelfareActivity;
 import com.zeus.ui_user.interfaces.OnDragStateChangeListener;
 import com.zeus.ui_user.model.Function;
 import com.zeus.ui_user.view.InboxBackgroundScrollView;
@@ -36,10 +39,17 @@ public class MySelfFragment extends Fragment {
 
     private Button btn;
     private TextView allOrder;
+    private Button payOrder;
+    private Button deliverOrder;
+    private Button receiveOrder;
+    private Button commandOrder;
+    private LinearLayout favorites;
+    private LinearLayout shoppingCart;
+    private LinearLayout welfare;
 
-    private ViewPager pager;
+    //private ViewPager pager;
     private CircleImageView photo;
-    private NonScrollingGridView functionGridView;
+    //private NonScrollingGridView functionGridView;
 
     private InboxLayoutListView inboxLayoutListView;
 
@@ -68,7 +78,31 @@ public class MySelfFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), BookCollectionTabActivity.class));
+                //startActivity(new Intent(getActivity(), BookCollectionTabActivity.class));
+            }
+        });
+
+        favorites = (LinearLayout) view.findViewById(R.id.user_favorites);
+        favorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), UserFavoritesActivity.class));
+            }
+        });
+
+        shoppingCart = (LinearLayout) view.findViewById(R.id.user_shopping_cart);
+        shoppingCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), UserShoppingCartActivity.class));
+            }
+        });
+
+        welfare = (LinearLayout) view.findViewById(R.id.user_welfare);
+        welfare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), UserWelfareActivity.class));
             }
         });
 
@@ -84,7 +118,39 @@ public class MySelfFragment extends Fragment {
         allOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), BookCollectionTabActivity.class));
+                startActivity(new Intent(getActivity(), BookCollectionTabActivity.class).putExtra("position",0));
+            }
+        });
+
+        payOrder = (Button)view.findViewById(R.id.user_account_pay);
+        payOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), BookCollectionTabActivity.class).putExtra("position",1));
+            }
+        });
+
+        deliverOrder = (Button)view.findViewById(R.id.user_account_deliver);
+        deliverOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), BookCollectionTabActivity.class).putExtra("position",2));
+            }
+        });
+
+        receiveOrder = (Button)view.findViewById(R.id.user_account_receive);
+        receiveOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), BookCollectionTabActivity.class).putExtra("position",3));
+            }
+        });
+
+        commandOrder = (Button)view.findViewById(R.id.user_account_command);
+        commandOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), BookCollectionTabActivity.class).putExtra("position",4));
             }
         });
         //initFunctionView(view);
@@ -136,21 +202,21 @@ public class MySelfFragment extends Fragment {
     }
 
     private void initItem(View view) {
-        final LinearLayout dingdan = (LinearLayout)view.findViewById(R.id.ding_dan);
-        dingdan.setOnClickListener(new View.OnClickListener() {
+        final LinearLayout zichan = (LinearLayout)view.findViewById(R.id.zichan);
+        zichan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                inboxLayoutListView.openWithAnim(dingdan);
+                inboxLayoutListView.openWithAnim(zichan);
             }
         });
 
-        final LinearLayout yuding = (LinearLayout)view.findViewById(R.id.yuding);
-        yuding.setOnClickListener(new View.OnClickListener() {
+/*        final LinearLayout jifen = (LinearLayout)view.findViewById(R.id.jifen);
+        jifen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                inboxLayoutListView.openWithAnim(yuding);
+                inboxLayoutListView.openWithAnim(jifen);
             }
-        });
+        });*/
 
         final LinearLayout tuijian = (LinearLayout)view.findViewById(R.id.tuijian);
         tuijian.setOnClickListener(new View.OnClickListener() {

@@ -55,6 +55,9 @@ public class BookCollectionTabActivity extends AppCompatActivity implements Mate
                             .setTabListener(this)
             );
         }
+
+        int position = getIntent().getExtras().getInt("position");
+
     }
 
     @Override

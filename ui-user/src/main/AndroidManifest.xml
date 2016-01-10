@@ -11,6 +11,9 @@
         <activity android:name=".activity.BookCollectionTabActivity"/>
         <activity android:name=".activity.BookListLabelActivity"/>
         <activity android:name=".activity.ExpressTimeLineActivity"/>
+        <activity android:name=".activity.UserWelfareActivity"/>
+        <activity android:name=".activity.UserFavoritesActivity"/>
+        <activity android:name=".activity.UserShoppingCartActivity"/>
     </application>
 
 </manifest>

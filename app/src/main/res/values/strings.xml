@@ -5,6 +5,8 @@
     <string name="activity_book_list">分类书单</string>
     <string name="activity_book_detail">购买</string>
     <string name="activity_book_recommend">热门活动</string>
+    <string name="activity_order_confirm">确认订单</string>
+    <string name="activity_new_book_come">新书上架</string>
 
     <string name="first_title">Comprehensive</string>
     <string name="first_desc">We collect the best pieces from around the web and combine them into a story</string>

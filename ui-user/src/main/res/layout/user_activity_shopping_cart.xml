@@ -9,11 +9,11 @@
 
     <ListView
         android:id="@+id/list_shopping_cart"
+        android:background="#F7F4F0"
         android:dividerHeight="15dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-
     </ListView>
 
     <LinearLayout
@@ -34,7 +34,8 @@
             <CheckBox
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp"
+                android:shadowColor="#999999"/>
 
             <TextView
                 android:layout_width="0dp"

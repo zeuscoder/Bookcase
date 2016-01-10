@@ -191,7 +191,8 @@ public class BookSearchActivity extends Activity {
 
             @Override
             public void onSearch(String searchTerm) {
-                Toast.makeText(BookSearchActivity.this, searchTerm + " Searched", Toast.LENGTH_LONG).show();
+                //Toast.makeText(BookSearchActivity.this, searchTerm + " Searched", Toast.LENGTH_LONG).show();
+                Toast.makeText(BookSearchActivity.this, "没有搜到对应的书籍", Toast.LENGTH_LONG).show();
             }
 
             @Override

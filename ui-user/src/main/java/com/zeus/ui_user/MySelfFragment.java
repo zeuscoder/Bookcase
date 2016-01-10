@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.zeus.common.widget.NonScrollingGridView;
 import com.zeus.ui_user.activity.BookCollectionTabActivity;
 import com.zeus.ui_user.activity.BookListLabelActivity;
+import com.zeus.ui_user.activity.ExpressTimeLineActivity;
 import com.zeus.ui_user.activity.UserFavoritesActivity;
 import com.zeus.ui_user.activity.UserShoppingCartActivity;
 import com.zeus.ui_user.activity.UserWelfareActivity;
@@ -37,7 +38,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class MySelfFragment extends Fragment {
 
-    private Button btn;
+    private Button express;
     private TextView allOrder;
     private Button payOrder;
     private Button deliverOrder;
@@ -74,11 +75,11 @@ public class MySelfFragment extends Fragment {
     }
 
     private void initUIView(View view) {
-        btn = (Button) view.findViewById(R.id.btnFollow);
-        btn.setOnClickListener(new View.OnClickListener() {
+        express = (Button) view.findViewById(R.id.user_setting);
+        express.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(getActivity(), BookCollectionTabActivity.class));
+                startActivity(new Intent(getActivity(), ExpressTimeLineActivity.class));
             }
         });
 

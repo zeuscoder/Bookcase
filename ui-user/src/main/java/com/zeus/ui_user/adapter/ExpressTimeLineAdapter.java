@@ -36,7 +36,7 @@ public class ExpressTimeLineAdapter extends RecyclerView.Adapter<ExpressTimeLine
     @Override
     public void onBindViewHolder(ExpressTimeLineViewHolder holder, int position) {
         ExpressTimeLineModel timeLineModel = mFeedList.get(position);
-        holder.name.setText("name：" + timeLineModel.getName() + "    age：" + timeLineModel.getAge());
+        holder.name.setText("name：" + timeLineModel.getName() + "    address：" + timeLineModel.getAge());
     }
 
     @Override

@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by zeus_coder on 2015/12/26.
  */
-public class ExpressTimeLineActivity extends Activity {
+public class ExpressTimeLineActivity extends BaseActivity {
 
     private RecyclerView expressRecyclerView;
 
@@ -27,6 +27,7 @@ public class ExpressTimeLineActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_list_express_timeline);
+        initTopButton(R.string.activity_express, R.mipmap.user_arrow_back, 0);
 
         expressRecyclerView = (RecyclerView) findViewById(R.id.label_express_timeline);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

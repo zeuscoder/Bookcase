@@ -14,6 +14,6 @@ public class UserFavoritesActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_activity_favorites);
-        initTopButton(R.string.activity_shopping_cart,R.mipmap.user_arrow_back, 0);
+        initTopButton(R.string.activity_favorites,R.mipmap.user_arrow_back, 0);
     }
 }

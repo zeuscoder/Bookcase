@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by zeus_coder on 2015/10/25.
  */
-public class BookListActivity extends Activity {
+public class BookListActivity extends BaseActivity {
 
     private PullToRefreshView bookPullToRefreshView;
     private ListView bookList;
@@ -25,6 +25,7 @@ public class BookListActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user__book_list);
+        initTopButton(R.string.activity_new_book_come, R.mipmap.user_arrow_back, 0);
         initView();
         setData();
         setAction();

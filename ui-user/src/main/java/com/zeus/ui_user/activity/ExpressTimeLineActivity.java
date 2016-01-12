@@ -37,6 +37,7 @@ public class ExpressTimeLineActivity extends BaseActivity {
         expressRecyclerView = (RecyclerView) findViewById(R.id.label_express_timeline);
         //LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         expressRecyclerView.setLayoutManager(new FullyLinearLayoutManager(ExpressTimeLineActivity.this));
+        //解决expressRecyclerView一开始显示底部的问题
         expressRecyclerView.setFocusable(false);
         initView();
     }

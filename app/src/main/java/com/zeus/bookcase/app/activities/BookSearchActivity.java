@@ -166,7 +166,8 @@ public class BookSearchActivity extends Activity {
             @Override
             public void onMenuClick() {
                 //Hamburger has been clicked
-                Toast.makeText(BookSearchActivity.this, "Menu click", Toast.LENGTH_LONG).show();
+                //Toast.makeText(BookSearchActivity.this, "Menu click", Toast.LENGTH_LONG).show();
+                BookSearchActivity.this.finish();
             }
         });
 

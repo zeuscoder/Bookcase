@@ -3,7 +3,6 @@ package com.zeus.bookcase.app.adpter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -15,8 +14,8 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.zeus.bookcase.R;
 import com.zeus.bookcase.app.view.FoldableLayout;
+import com.zeus.market.activity.BookDiscountActivity;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -88,6 +87,8 @@ public class FoldablePhotoAdapter extends RecyclerView.Adapter<FoldablePhotoAdap
                 Uri uri = Uri.parse(path);
                 shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
                 mContext.startActivity(Intent.createChooser(shareIntent, "Share image using"));*/
+                //mContext.startActivity(new Intent(mContext, BookKindListActivity.class));
+                mContext.startActivity(new Intent(mContext, BookDiscountActivity.class));
             }
         });
 

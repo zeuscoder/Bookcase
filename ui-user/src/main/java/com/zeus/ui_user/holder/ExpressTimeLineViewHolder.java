@@ -12,12 +12,14 @@ import com.zeus.ui_user.view.ExpressTimelineView;
  */
 public class ExpressTimeLineViewHolder extends RecyclerView.ViewHolder {
 
-    public TextView name;
+    public TextView thing;
+    public TextView time;
     public ExpressTimelineView mTimelineView;
 
     public ExpressTimeLineViewHolder(View itemView, int viewType) {
         super(itemView);
-        name = (TextView) itemView.findViewById(R.id.tx_name);
+        thing = (TextView) itemView.findViewById(R.id.tx_thing);
+        time = (TextView) itemView.findViewById(R.id.tx_time);
         mTimelineView = (ExpressTimelineView) itemView.findViewById(R.id.time_marker);
         mTimelineView.initLine(viewType);
     }

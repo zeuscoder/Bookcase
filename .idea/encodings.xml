@@ -51,11 +51,13 @@
     <file url="file://$PROJECT_DIR$/lib-menu/src/main/java/com/zeus/menu/MenuAdapter.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-menu/src/main/java/com/zeus/menu/MenuObject.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/lib-menu/src/main/java/com/zeus/menu/MenuParams.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/market/src/main/res/mipmap-hdpi/market_arrow_back.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ui-case/src/main/java/com/zeus/ui_case/MainFragment.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ui-case/src/main/res/layout/case_activity_main.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ui-case/src/main/res/layout/fragment_main.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ui-case/src/main/res/mipmap-hdpi/btn_add.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ui-case/src/main/res/mipmap-hdpi/btn_back.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ui-case/src/main/res/mipmap-hdpi/case_arrow_back.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ui-case/src/main/res/mipmap-hdpi/ic_launcher.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ui-case/src/main/res/mipmap-hdpi/icn_1.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ui-case/src/main/res/mipmap-hdpi/icn_2.png" charset="GBK" />

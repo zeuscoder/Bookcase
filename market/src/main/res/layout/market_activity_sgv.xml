@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include layout="@layout/market_activity_topbar"/>
+
     <com.zeus.common.view.StaggeredGridView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/stagger_grid_view"

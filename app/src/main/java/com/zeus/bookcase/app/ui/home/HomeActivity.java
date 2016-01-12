@@ -121,24 +121,28 @@ public class HomeActivity extends AppCompatActivity {
                         homeFragment = new HomeFragment();
                     }
                     replaceFragment(homeFragment);
+                    content_search.setVisibility(View.VISIBLE);
                     break;
                 case R.id.tab_market:
                     if(null == marketFragment) {
                         marketFragment = new MarketFragment();
                     }
                     replaceFragment(marketFragment);
+                    content_search.setVisibility(View.GONE);
                     break;
                 case R.id.tab_case:
                     if(null == caseFragment) {
                         caseFragment = new CaseFragment();
                     }
                     replaceFragment(caseFragment);
+                    content_search.setVisibility(View.GONE);
                     break;
                 case R.id.tab_user:
                     if(null == mySelfFragment) {
                         mySelfFragment = new MySelfFragment();
                     }
                     replaceFragment(mySelfFragment);
+                    content_search.setVisibility(View.GONE);
                     break;
         }
         }

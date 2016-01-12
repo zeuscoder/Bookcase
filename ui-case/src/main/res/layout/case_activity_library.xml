@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:background="@mipmap/library_background">
 
+    <include layout="@layout/case_activity_topbar"/>
+
     <TextView
         android:gravity="center_horizontal|center_vertical"
         android:id="@+id/library_text"

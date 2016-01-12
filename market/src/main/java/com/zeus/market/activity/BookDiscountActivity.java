@@ -1,6 +1,5 @@
-package com.zeus.market;
+package com.zeus.market.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zeus.common.view.StaggeredGridView;
+import com.zeus.market.R;
 import com.zeus.market.adapter.BookDiscountAdapter;
 import com.zeus.market.data.BookDiscountSampleData;
 
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 /**
  * Created by zeus_coder on 2015/12/1.
  */
-public class BookDiscountActivity extends Activity  implements AbsListView.OnScrollListener, AbsListView.OnItemClickListener, AdapterView.OnItemLongClickListener{
+public class BookDiscountActivity extends BaseActivity  implements AbsListView.OnScrollListener, AbsListView.OnItemClickListener, AdapterView.OnItemLongClickListener{
 
     private static final String TAG = "BookDiscountActivity";
     public static final String SAVED_DATA_KEY = "SAVED_DATA";
@@ -34,6 +34,7 @@ public class BookDiscountActivity extends Activity  implements AbsListView.OnScr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.market_activity_sgv);
+        initTopButton(R.string.app_name, R.mipmap.market_arrow_back, 0);
 
         mBookGridView = (StaggeredGridView) findViewById(R.id.stagger_grid_view);
 /*        LayoutInflater layoutInflater = getLayoutInflater();

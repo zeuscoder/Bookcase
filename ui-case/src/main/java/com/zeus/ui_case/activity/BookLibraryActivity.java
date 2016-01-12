@@ -1,6 +1,5 @@
 package com.zeus.ui_case.activity;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -22,7 +21,7 @@ import com.zeus.ui_case.library.BuildLayerLinearLayout;
 /**
  * Created by zeus_coder on 2016/1/1.
  */
-public class BookLibraryActivity extends Activity {
+public class BookLibraryActivity extends BaseActivity {
 
     BooheeScrollView booheeScrollView;
     BuildLayerLinearLayout buildLayerLinearLayout;
@@ -32,6 +31,7 @@ public class BookLibraryActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.case_activity_library);
+        initTopButton(R.string.app_name, R.mipmap.case_arrow_back, 0);
 
         booheeScrollView = (BooheeScrollView)findViewById(R.id.library_horizon);
         buildLayerLinearLayout = (BuildLayerLinearLayout)findViewById(R.id.library_linear);

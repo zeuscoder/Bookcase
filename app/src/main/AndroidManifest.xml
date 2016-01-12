@@ -37,6 +37,7 @@
         <activity android:name=".app.activities.PreferenceWebActivity"/>
         <activity android:name=".app.activities.BookPurchaseDetailActivity"/>
         <activity android:name=".app.activities.BookOrderConfirmActivity"/>
+        <activity android:name=".app.activities.BookKindListActivity"/>
 
         <provider
             android:authorities="com.zeus.bookcase"

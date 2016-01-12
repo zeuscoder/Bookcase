@@ -7,23 +7,24 @@ import java.io.Serializable;
  */
 public class ExpressTimeLineModel implements Serializable{
 
-    private String name;
+    private String thing;
 
-    private int age;
+    private String time;
 
-    public String getName() {
-        return name;
+    public String getThing() {
+        return thing;
     }
 
-    public int getAge() {
-        return age;
+    public void setThing(String thing) {
+        this.thing = thing;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getTime() {
+        return time;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setTime(String time) {
+        this.time = time;
     }
+
 }

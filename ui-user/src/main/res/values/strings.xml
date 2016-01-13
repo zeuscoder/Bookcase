@@ -17,6 +17,7 @@
 
     <string name="activity_shopping_cart">购物车</string>
     <string name="activity_favorites">收藏夹</string>
+    <string name="activity_welfare">福利社</string>
     <string name="activity_new_book_come">新书上架</string>
     <string name="activity_express">物流详情</string>
 </resources>

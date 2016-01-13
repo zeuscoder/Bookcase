@@ -70,5 +70,4 @@ dependencies {
     compile project(':lib-menu')
     compile project(':lib-search')
     compile project(':ui-case')
-    compile files('libs/babushka-0.1.jar')
 }

@@ -38,7 +38,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class MySelfFragment extends Fragment {
 
-    private Button express;
+    private Button setting;
     private TextView allOrder;
     private Button payOrder;
     private Button deliverOrder;
@@ -75,11 +75,12 @@ public class MySelfFragment extends Fragment {
     }
 
     private void initUIView(View view) {
-        express = (Button) view.findViewById(R.id.user_setting);
-        express.setOnClickListener(new View.OnClickListener() {
+        setting = (Button) view.findViewById(R.id.user_setting);
+        setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), ExpressTimeLineActivity.class));
+                //startActivity(new Intent(getActivity(), ExpressTimeLineActivity.class));
+                startActivity(new Intent(getActivity(), LogInActivity.class));
             }
         });
 

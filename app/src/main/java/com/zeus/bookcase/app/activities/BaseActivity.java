@@ -2,11 +2,13 @@ package com.zeus.bookcase.app.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zeus.bookcase.R;
+import com.zeus.bookcase.app.AppMain;
 
 /**
  * Created by zeus_coder on 2015/11/20.
@@ -19,7 +21,15 @@ public class BaseActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppMain.getInstance().addActivity(this);
+        Log.d("Activity----", getClass().getSimpleName());
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onDestroy() {
+        AppMain.getInstance().removeActivity(this);
+        super.onDestroy();
     }
 
     public void initTopButton(int titleId, int leftImgId, int rightStrId) {

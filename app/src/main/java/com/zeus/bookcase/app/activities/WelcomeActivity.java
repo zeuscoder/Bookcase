@@ -13,6 +13,8 @@ import android.widget.ImageView;
 
 import com.zeus.bookcase.R;
 import com.zeus.bookcase.app.ui.home.HomeActivity;
+import com.zeus.bookcase.app.utils.Define;
+import com.zeus.bookcase.app.utils.TerminalHelper;
 import com.zeus.common.app.CommonDialogs;
 import com.zeus.skeleton.app.AppNavigator;
 import com.zeus.skeleton.app.BaseActivity;
@@ -26,9 +28,18 @@ import java.io.OutputStream;
  */
 public class WelcomeActivity extends BaseActivity {
 
-    private static final String EXTRA_SUB_INTENT = "sub_intent";
+    //工具类
+    private TerminalHelper terminalHelper;
+    private Define define;
 
-    private static final int REQUEST_GPS = 1;
+    /*定义消息常量*/
+    private static final int LOAD_SPLASH_IMAGE = 0;
+    private static final int DO_INIT_TASK = 1;
+    private static final int TO_LOGIN_ACTIVITY = 2;
+    private static final int TO_MAIN_ACTIVITY = 3;
+    private String splashUri = "drawable://" + R.drawable.app__bg_splash;
+
+    private static final String EXTRA_SUB_INTENT = "sub_intent";
 
     protected Dialog openingDialog;
 

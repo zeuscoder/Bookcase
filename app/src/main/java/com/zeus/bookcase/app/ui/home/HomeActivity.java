@@ -20,7 +20,9 @@ import com.quinny898.library.persistentsearch.SearchBox;
 import com.quinny898.library.persistentsearch.SearchResult;
 import com.yalantis.guillotine.animation.GuillotineAnimation;
 import com.zeus.bookcase.R;
+import com.zeus.bookcase.app.AppMain;
 import com.zeus.bookcase.app.activities.BookSearchActivity;
+import com.zeus.bookcase.app.utils.CommonUtil;
 import com.zeus.market.MarketFragment;
 import com.zeus.ui_case.CaseFragment;
 import com.zeus.ui_user.MySelfFragment;
@@ -47,6 +49,9 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView content_search;
 
     public View mainView;
+
+    // 退出系统字段
+    protected long exitTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,10 +155,17 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        if (keyCode == KeyEvent.KEYCODE_BACK
-//                && event.getAction() == KeyEvent.ACTION_DOWN) {
-//            if ((System.currentTimeMillis() - exi))
-//        }
+        // 在两秒钟内连续按两次返回，则退出
+        if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
+            if((System.currentTimeMillis()-exitTime) > 2000){
+                CommonUtil.shortToast(getApplicationContext(), "再按一次退出系统");
+                exitTime = System.currentTimeMillis();
+            } else {
+                // 退出应用
+                AppMain.getInstance().exit();
+            }
+            return true;
+        }
         return super.onKeyDown(keyCode, event);
     }
 

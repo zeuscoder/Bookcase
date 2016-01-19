@@ -29,5 +29,4 @@ dependencies {
     provided 'org.glassfish:javax.annotation:10.0-b28'
     compile project(':lib-common')
     compile 'com.umeng.analytics:analytics:latest.integration'
-    compile project(':ui-user')
 }

@@ -16,12 +16,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zeus.common.widget.NonScrollingGridView;
+import com.zeus.skeleton.Skeleton;
 import com.zeus.ui_user.activity.BookCollectionTabActivity;
 import com.zeus.ui_user.activity.BookListLabelActivity;
 import com.zeus.ui_user.activity.ExpressTimeLineActivity;
 import com.zeus.ui_user.activity.UserFavoritesActivity;
 import com.zeus.ui_user.activity.UserShoppingCartActivity;
 import com.zeus.ui_user.activity.UserWelfareActivity;
+import com.zeus.ui_user.adapter.WelfareAdapter;
 import com.zeus.ui_user.interfaces.OnDragStateChangeListener;
 import com.zeus.ui_user.model.Function;
 import com.zeus.ui_user.view.InboxBackgroundScrollView;
@@ -59,6 +61,7 @@ public class MySelfFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        System.out.print("_________________-moumoumoumou_____" + Skeleton.component().app());
         return inflater.inflate(R.layout.user_fragment_profile, container, false);
     }
 
@@ -177,7 +180,7 @@ public class MySelfFragment extends Fragment {
                 }
             }
         });
-        inboxLayoutListView.setAdapter(new BaseAdapter() {
+        /*inboxLayoutListView.setAdapter(new BaseAdapter() {
             @Override
             public int getCount() {
                 return 15;
@@ -199,7 +202,8 @@ public class MySelfFragment extends Fragment {
                 View view = inflater.inflate(R.layout.user_setting_item, null);
                 return view;
             }
-        });
+        });*/
+        inboxLayoutListView.setAdapter(new WelfareAdapter(getActivity()));
         initItem(view);
     }
 

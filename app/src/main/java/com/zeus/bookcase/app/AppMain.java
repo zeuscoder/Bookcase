@@ -10,6 +10,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.zeus.bookcase.BuildConfig;
+import com.zeus.skeleton.Skeleton;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -108,7 +109,15 @@ public class AppMain extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Skeleton.initialize(createComponent());
+
         initImageLoader(getApplicationContext());
+    }
+
+    protected com.zeus.bookcase.app.AppComponent createComponent() {
+        return DaggerAppComponent.builder()
+                .module(new Skeleton.Module(AppMain.getInstance()))
+                .build();
     }
 
 }

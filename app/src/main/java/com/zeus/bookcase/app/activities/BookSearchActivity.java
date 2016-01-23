@@ -4,19 +4,32 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.loopj.android.http.RequestParams;
 import com.quinny898.library.persistentsearch.SearchBox;
 import com.quinny898.library.persistentsearch.SearchResult;
 import com.zeus.bookcase.R;
+import com.zeus.bookcase.app.adpter.BookSearchAdapter;
+import com.zeus.bookcase.app.api.BaseAsyncHttp;
+import com.zeus.bookcase.app.api.HttpResponseHandler;
+import com.zeus.bookcase.app.model.Book;
+import com.zeus.bookcase.app.utils.KeyboardUtils;
+import com.zeus.bookcase.app.view.CircularProgressView;
 import com.zeus.common.menu.DropDownMenu;
 import com.zeus.common.menu.OnMenuSelectedListener;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +41,11 @@ public class BookSearchActivity extends Activity {
 
     private SearchBox search;
     private DropDownMenu menu;
-    private ListView list;
+    private ListView booksList;
+    private List<Book> books=new ArrayList<Book>();
+    private BookSearchAdapter bookSearchAdapter;
+    private CircularProgressView progressView;
+    private Thread updateThread;
 
     //填充数据
     private int city_index;
@@ -52,6 +69,22 @@ public class BookSearchActivity extends Activity {
         //筛选
         menu = (DropDownMenu) findViewById(R.id.choose_menu);
         setMenuSetting();
+
+        progressView = (CircularProgressView) findViewById(R.id.book_search_progress_view);
+
+        bookSearchAdapter = new BookSearchAdapter(BookSearchActivity.this, books);
+        booksList.setAdapter(bookSearchAdapter);
+
+        booksList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(BookSearchActivity.this, BookPurchaseDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("book", books.get(position));
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -91,8 +124,8 @@ public class BookSearchActivity extends Activity {
                 } else {
                     age_index = RowIndex;
                 }
-                //过滤筛选
-                setFilter();
+                //过滤筛选 暂时关闭此功能
+                //setFilter();
             }
         });
         List<String[]> items = new ArrayList<>();
@@ -115,9 +148,9 @@ public class BookSearchActivity extends Activity {
 
         menu.setIsDebug(false);
 
-        list=(ListView)findViewById(R.id.lv_list);
+        booksList =(ListView)findViewById(R.id.lv_list);
         data=getData();
-        list.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, data));
+        booksList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, data));
     }
 
     private void setFilter(){
@@ -130,7 +163,7 @@ public class BookSearchActivity extends Activity {
                 temp.add(data.get(i));
             }
         }
-        list.setAdapter(new ArrayAdapter<String>(BookSearchActivity.this, android.R.layout.simple_expandable_list_item_1,temp));
+        //booksList.setAdapter(new ArrayAdapter<String>(BookSearchActivity.this, android.R.layout.simple_expandable_list_item_1, temp));
     }
 
     private List<String> getData(){
@@ -193,7 +226,10 @@ public class BookSearchActivity extends Activity {
             @Override
             public void onSearch(String searchTerm) {
                 //Toast.makeText(BookSearchActivity.this, searchTerm + " Searched", Toast.LENGTH_LONG).show();
-                Toast.makeText(BookSearchActivity.this, "没有搜到对应的书籍", Toast.LENGTH_LONG).show();
+                //Toast.makeText(BookSearchActivity.this, "没有搜到对应的书籍", Toast.LENGTH_LONG).show();
+                startAnimationThreadStuff(100);
+                KeyboardUtils.closeKeyBoard(BookSearchActivity.this);
+                getRequestData(searchTerm);
             }
 
             @Override
@@ -207,6 +243,60 @@ public class BookSearchActivity extends Activity {
             }
 
         });
+    }
+
+    /*加载查询数据 */
+    public void getRequestData(String str){
+        RequestParams params=new RequestParams();
+        params.put("q", str.trim());
+        BaseAsyncHttp.getReq("/v2/book/search", params, new HttpResponseHandler() {
+            @Override
+            public void jsonSuccess(JSONObject resp) {
+                books.clear();
+                progressView.setVisibility(View.GONE);
+                JSONArray jsonbooks = resp.optJSONArray("books");
+                for (int i = 0; i < jsonbooks.length(); i++) {
+                    Book mBook = new Book();
+                    mBook.setId(jsonbooks.optJSONObject(i).optString("id"));
+                    mBook.setRate(jsonbooks.optJSONObject(i).optJSONObject("rating").optDouble("average"));
+                    mBook.setReviewCount(jsonbooks.optJSONObject(i).optJSONObject("rating").optInt("numRaters"));
+                    String authors = "";
+                    for (int j = 0; j < jsonbooks.optJSONObject(i).optJSONArray("author").length(); j++) {
+                        authors = authors + " " + jsonbooks.optJSONObject(i).optJSONArray("author").optString(j);
+                    }
+                    mBook.setAuthor(authors);
+                    String tags = "";
+                    for (int j = 0; j < jsonbooks.optJSONObject(i).optJSONArray("tags").length(); j++) {
+                        tags = tags + " " + jsonbooks.optJSONObject(i).optJSONArray("tags").optJSONObject(j).optString("name");
+                    }
+                    mBook.setTag(tags);
+                    mBook.setAuthorInfo(jsonbooks.optJSONObject(i).optString("author_intro"));
+                    mBook.setBitmap(jsonbooks.optJSONObject(i).optString("image"));
+                    mBook.setId(jsonbooks.optJSONObject(i).optString("id"));
+                    mBook.setTitle(jsonbooks.optJSONObject(i).optString("title"));
+                    mBook.setPublisher(jsonbooks.optJSONObject(i).optString("publisher"));
+                    mBook.setPublishDate(jsonbooks.optJSONObject(i).optString("pubdate"));
+                    mBook.setISBN(jsonbooks.optJSONObject(i).optString("isbn13"));
+                    mBook.setSummary(jsonbooks.optJSONObject(i).optString("summary"));
+                    mBook.setPage(jsonbooks.optJSONObject(i).optString("pages"));
+                    mBook.setPrice(jsonbooks.optJSONObject(i).optString("price"));
+                    mBook.setContent(jsonbooks.optJSONObject(i).optString("catalog"));
+                    mBook.setUrl(jsonbooks.optJSONObject(i).optString("ebook_url"));
+                    books.add(mBook);
+                }
+                updateToView();
+            }
+
+            @Override
+            public void jsonFail(JSONObject resp) {
+                Toast.makeText(BookSearchActivity.this, "网络出错", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void updateToView(){
+        bookSearchAdapter.setData(books);
+        bookSearchAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -227,5 +317,34 @@ public class BookSearchActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void startAnimationThreadStuff(long delay)
+    {
+        if(updateThread != null && updateThread.isAlive())
+            updateThread.interrupt();
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                progressView.setVisibility(View.VISIBLE);
+                progressView.setProgress(0f);
+                progressView.startAnimation(); // Alias for resetAnimation, it's all the same
+                updateThread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while (progressView.getProgress() < progressView.getMaxProgress() && !Thread.interrupted()) {
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressView.setProgress(progressView.getProgress() + 10);
+                                }
+                            });
+                            SystemClock.sleep(250);
+                        }
+                    }
+                });
+                updateThread.start();
+            }
+        }, delay);
     }
 }

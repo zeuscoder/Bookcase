@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.zeus.ui_case.activity.BookLibraryActivity;
-import com.zeus.ui_case.activity.DetailActivity;
+import com.zeus.ui_case.activity.FilmRoomActivity;
 import com.zeus.ui_case.activity.MusicCardActivity;
 
 /**
@@ -20,6 +20,7 @@ public class CaseFragment extends Fragment {
 
     private LinearLayout bookStore;
     private LinearLayout musicStore;
+    private LinearLayout filmStore;
 
     @Nullable
     @Override
@@ -32,6 +33,7 @@ public class CaseFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         bookStore = (LinearLayout) view.findViewById(R.id.book_store);
         musicStore = (LinearLayout) view.findViewById(R.id.music_store);
+        filmStore = (LinearLayout) view.findViewById(R.id.film_store);
         bookStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,6 +45,12 @@ public class CaseFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), MusicCardActivity.class));
+            }
+        });
+        filmStore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), FilmRoomActivity.class));
             }
         });
     }

@@ -24,6 +24,7 @@ public class MusicCardActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.case_music_card_main);
+
         initImageLoader();
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()

@@ -7,6 +7,7 @@
         <activity android:name=".activity.DetailActivity"/>
         <activity android:name=".activity.MusicCardActivity"/>
         <activity android:name=".activity.BookLibraryActivity"/>
+        <activity android:name=".activity.FilmRoomActivity"/>
     </application>
 
 </manifest>

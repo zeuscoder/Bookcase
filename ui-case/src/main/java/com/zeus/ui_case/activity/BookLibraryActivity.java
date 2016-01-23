@@ -31,7 +31,7 @@ public class BookLibraryActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.case_activity_library);
-        initTopButton(R.string.app_name, R.mipmap.case_arrow_back, 0);
+        initTopButton(R.string.activity_book, R.mipmap.case_arrow_back, 0);
 
         booheeScrollView = (BooheeScrollView)findViewById(R.id.library_horizon);
         buildLayerLinearLayout = (BuildLayerLinearLayout)findViewById(R.id.library_linear);

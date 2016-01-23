@@ -6,14 +6,16 @@
     android:background="#444153"
     android:orientation="vertical">
 
-    <TextView
+<!--    <TextView
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:background="#383547"
         android:gravity="center"
         android:text="乐趣"
         android:textColor="#fff"
-        android:textSize="18sp" />
+        android:textSize="18sp" />-->
+
+    <include layout="@layout/case_activity_topbar"/>
 
     <RelativeLayout
         android:layout_width="fill_parent"

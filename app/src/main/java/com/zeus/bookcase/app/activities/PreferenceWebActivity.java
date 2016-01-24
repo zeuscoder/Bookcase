@@ -1,28 +1,104 @@
 package com.zeus.bookcase.app.activities;
 
-import android.app.Activity;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.util.Log;
+import android.view.View;
+import android.webkit.JsPromptResult;
+import android.webkit.JsResult;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import com.zeus.bookcase.R;
+import com.zeus.bookcase.app.view.CircularProgressView;
+
+import java.io.File;
 
 /**
  * Created by zeus_coder on 2015/12/21.
  */
 public class PreferenceWebActivity extends BaseActivity {
 
+    private static final String TAG = PreferenceWebActivity.class.getSimpleName();
+    private static final String APP_WEB_CACAHE_DIRNAME = "/webcache";
+    private String url= "https://github.com/zeuscoder";;
+
     private WebView web;
-    private WebSettings wSet;
+    private CircularProgressView progressView;
+    private Thread updateThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_activity_preferentail_web);
         initTopButton(R.string.activity_book_recommend, R.mipmap.app_arrow_back, 0);
+        findWebView();
+    }
+
+    private void findWebView() {
         web = (WebView) findViewById(R.id.web_preference);
-        wSet = web.getSettings();
-        wSet.setJavaScriptEnabled(true);
+        progressView = (CircularProgressView) findViewById(R.id.book_web_progress_view);
+        initWebView();
+        web.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onLoadResource(WebView view, String url) {
+                Log.i(TAG, "onLoadResource url=" + url);
+                super.onLoadResource(view, url);
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView webview, String url) {
+                Log.i(TAG, "intercept url=" + url);
+                webview.loadUrl(url);
+                return true;
+            }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                Log.e(TAG, "onPageStarted");
+                startAnimationThreadStuff(100);  // 显示加载界面
+                //progressView.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                String title = view.getTitle();
+                Log.e(TAG, "onPageFinished WebView title=" + title);
+                progressView.setVisibility(View.GONE); // 隐藏加载界面
+            }
+
+            @Override
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                progressView.setVisibility(View.GONE); // 隐藏加载界面
+                Toast.makeText(getApplicationContext(), "网络错误",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+        web.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
+                Log.e(TAG, "onJsAlert " + message);
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                result.confirm();
+                return true;
+            }
+            @Override
+            public boolean onJsConfirm(WebView view, String url, String message, JsResult result) {
+                Log.e(TAG, "onJsConfirm " + message);
+                return super.onJsConfirm(view, url, message, result);
+            }
+            @Override
+            public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
+                Log.e(TAG, "onJsPrompt " + url);
+                return super.onJsPrompt(view, url, message, defaultValue, result);
+            }
+        });
+        web.loadUrl(url);
 
         //打开本包内asset目录下的index.html文件
         //web.loadUrl("file:///android_asset/web/prefentence.html");
@@ -31,6 +107,102 @@ public class PreferenceWebActivity extends BaseActivity {
         //web.loadUrl("content://com.android.htmlfileprovider/sdcard/prefentence.html");
 
         //打开指定URL的html文件
-        web.loadUrl("http://ironsummitmedia.github.io/startbootstrap-agency/");
+        //web.loadUrl("http://ironsummitmedia.github.io/startbootstrap-agency/");
+        //web.loadUrl("https://github.com/zeuscoder");
+    }
+
+    private void initWebView() {
+        web.getSettings().setJavaScriptEnabled(true);
+        web.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        web.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);  //设置 缓存模式
+        //开启 database storage API功能
+        web.getSettings().setDomStorageEnabled(true);
+        String cacheDirPath = getFilesDir().getAbsolutePath() + APP_WEB_CACAHE_DIRNAME;
+        Log.i(TAG, "webView------------cache=" + cacheDirPath);
+        //设置数据库缓存路径
+        web.getSettings().setDatabasePath(cacheDirPath);
+        //设置  Application Caches 缓存目录
+        web.getSettings().setAppCachePath(cacheDirPath);
+        //开启 Application Caches 功能
+        web.getSettings().setAppCacheEnabled(true);
+    }
+
+    private void startAnimationThreadStuff(long delay)
+    {
+        if(updateThread != null && updateThread.isAlive())
+            updateThread.interrupt();
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                progressView.setVisibility(View.VISIBLE);
+                progressView.setProgress(0f);
+                progressView.startAnimation(); // Alias for resetAnimation, it's all the same
+                updateThread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while (progressView.getProgress() < progressView.getMaxProgress() && !Thread.interrupted()) {
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressView.setProgress(progressView.getProgress() + 10);
+                                }
+                            });
+                            SystemClock.sleep(250);
+                        }
+                    }
+                });
+                updateThread.start();
+            }
+        }, delay);
+    }
+
+    /**
+     * 清除WebView缓存
+     */
+    public void clearWebViewCache(){
+        //清理Webview缓存数据库
+        try {
+            deleteDatabase("webview.db");
+            deleteDatabase("webviewCache.db");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //WebView 缓存文件
+        File appCacheDir = new File(getFilesDir().getAbsolutePath() + APP_WEB_CACAHE_DIRNAME);
+        Log.e(TAG, "appCacheDir path="+appCacheDir.getAbsolutePath());
+
+        File webviewCacheDir = new File(getCacheDir().getAbsolutePath() + "/webviewCache");
+        Log.e(TAG, "webviewCacheDir path=" + webviewCacheDir.getAbsolutePath());
+
+        //删除webview 缓存目录
+        if(webviewCacheDir.exists()){
+            deleteFile(webviewCacheDir);
+        }
+        //删除webview 缓存 缓存目录
+        if(appCacheDir.exists()){
+            deleteFile(appCacheDir);
+        }
+    }
+
+    /**
+     * 递归删除 文件/文件夹
+     *
+     * @param file
+     */
+    public void deleteFile(File file) {
+        Log.i(TAG, "delete file path=" + file.getAbsolutePath());
+        if (file.exists()) {
+            if (file.isFile()) {
+                file.delete();
+            } else if (file.isDirectory()) {
+                File files[] = file.listFiles();
+                for (int i = 0; i < files.length; i++) {
+                    deleteFile(files[i]);
+                }
+            }
+            file.delete();
+        } else {
+            Log.e(TAG, "delete file no exists " + file.getAbsolutePath());
+        }
     }
 }

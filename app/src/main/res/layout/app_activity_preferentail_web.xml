@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:loading="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <include layout="@layout/app__activity_topbar"/>
 
-    <WebView
-        android:id="@+id/web_preference"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+        <WebView
+            android:id="@+id/web_preference"
+            android:background="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <com.zeus.bookcase.app.view.CircularProgressView
+            android:id="@+id/book_web_progress_view"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="0dp"
+            loading:cpv_thickness="4dp"
+            loading:cpv_indeterminate="true"
+            loading:cpv_animAutostart="false"
+            />
+    </RelativeLayout>
+
 
 </LinearLayout>

@@ -30,7 +30,7 @@
             android:id="@+id/lv_list"
             android:background="#ffffff"
             android:layout_height="match_parent"/>
-        <com.zeus.bookcase.app.view.CircularProgressView
+<!--        <com.zeus.bookcase.app.view.CircularProgressView
             android:id="@+id/book_search_progress_view"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
@@ -41,8 +41,14 @@
             progress:cpv_thickness="4dp"
             progress:cpv_indeterminate="true"
             progress:cpv_animAutostart="false"
-            />
-
+            />-->
+        <com.zeus.bookcase.app.view.LoadingView
+            android:id="@+id/book_search_progress_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            progress:loadingText="加载中..."/>
     </RelativeLayout>
 
 

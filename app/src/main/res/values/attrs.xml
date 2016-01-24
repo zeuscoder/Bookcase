@@ -22,4 +22,10 @@
         <attr name="cpv_animSteps" format="integer" />
     </declare-styleable>
 
+    <!-- 58LoadingView -->
+    <declare-styleable name="LoadingView">
+        <attr name="loadingText" format="string"/>
+        <attr name="loadingTextAppearance" format="reference"/>
+    </declare-styleable>
+
 </resources>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:loading="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="#FFFFFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,7 +16,15 @@
             android:background="#FFFFFF"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-        <com.zeus.bookcase.app.view.CircularProgressView
+        <com.zeus.ui_user.view.ErrorView
+            android:id="@+id/web_error_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            app:ev_subtitle="Something went terribly wrong!"/>
+<!--        <com.zeus.bookcase.app.view.CircularProgressView
             android:id="@+id/book_web_progress_view"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
@@ -27,7 +35,13 @@
             loading:cpv_thickness="4dp"
             loading:cpv_indeterminate="true"
             loading:cpv_animAutostart="false"
-            />
+            />-->
+        <com.zeus.bookcase.app.view.LoadingView
+            android:id="@+id/book_web_progress_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            loading:loadingText="加载中..."/>
     </RelativeLayout>
 
 

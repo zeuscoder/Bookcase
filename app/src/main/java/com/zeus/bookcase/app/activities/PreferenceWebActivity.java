@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.zeus.bookcase.R;
 import com.zeus.bookcase.app.view.CircularProgressView;
+import com.zeus.bookcase.app.view.LoadingView;
+import com.zeus.ui_user.view.ErrorView;
 
 import java.io.File;
 
@@ -26,11 +28,12 @@ public class PreferenceWebActivity extends BaseActivity {
 
     private static final String TAG = PreferenceWebActivity.class.getSimpleName();
     private static final String APP_WEB_CACAHE_DIRNAME = "/webcache";
-    private String url= "https://github.com/zeuscoder";;
+    private String url= "https://github.com/zeuscoder";
 
     private WebView web;
-    private CircularProgressView progressView;
-    private Thread updateThread;
+    //private CircularProgressView progressView;
+    private LoadingView progressView;
+    private ErrorView error;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +45,9 @@ public class PreferenceWebActivity extends BaseActivity {
 
     private void findWebView() {
         web = (WebView) findViewById(R.id.web_preference);
-        progressView = (CircularProgressView) findViewById(R.id.book_web_progress_view);
+        //progressView = (CircularProgressView) findViewById(R.id.book_web_progress_view);
+        progressView = (LoadingView) findViewById(R.id.book_web_progress_view);
+        error = (ErrorView) findViewById(R.id.web_error_view);
         initWebView();
         web.setWebViewClient(new WebViewClient() {
             @Override
@@ -61,20 +66,23 @@ public class PreferenceWebActivity extends BaseActivity {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 Log.e(TAG, "onPageStarted");
-                startAnimationThreadStuff(100);  // 显示加载界面
-                //progressView.setVisibility(View.VISIBLE);
+                //startAnimationThreadStuff(100);  // 显示加载界面
+                progressView.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                String title = view.getTitle();
-                Log.e(TAG, "onPageFinished WebView title=" + title);
                 progressView.setVisibility(View.GONE); // 隐藏加载界面
             }
 
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                progressView.setVisibility(View.GONE); // 隐藏加载界面
+                if (errorCode == -2) {
+                    progressView.setVisibility(View.GONE); // 隐藏加载界面
+                }
+                web.setVisibility(View.GONE);
+                error.setVisibility(View.VISIBLE);
+                //setContentView(R.layout.user_fragment_order);
                 Toast.makeText(getApplicationContext(), "网络错误",
                         Toast.LENGTH_LONG).show();
             }
@@ -125,35 +133,6 @@ public class PreferenceWebActivity extends BaseActivity {
         web.getSettings().setAppCachePath(cacheDirPath);
         //开启 Application Caches 功能
         web.getSettings().setAppCacheEnabled(true);
-    }
-
-    private void startAnimationThreadStuff(long delay)
-    {
-        if(updateThread != null && updateThread.isAlive())
-            updateThread.interrupt();
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                progressView.setVisibility(View.VISIBLE);
-                progressView.setProgress(0f);
-                progressView.startAnimation(); // Alias for resetAnimation, it's all the same
-                updateThread = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        while (progressView.getProgress() < progressView.getMaxProgress() && !Thread.interrupted()) {
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    progressView.setProgress(progressView.getProgress() + 10);
-                                }
-                            });
-                            SystemClock.sleep(250);
-                        }
-                    }
-                });
-                updateThread.start();
-            }
-        }, delay);
     }
 
     /**

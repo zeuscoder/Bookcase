@@ -25,6 +25,7 @@ import com.zeus.bookcase.app.api.HttpResponseHandler;
 import com.zeus.bookcase.app.model.Book;
 import com.zeus.bookcase.app.utils.KeyboardUtils;
 import com.zeus.bookcase.app.view.CircularProgressView;
+import com.zeus.bookcase.app.view.LoadingView;
 import com.zeus.common.menu.DropDownMenu;
 import com.zeus.common.menu.OnMenuSelectedListener;
 
@@ -44,8 +45,9 @@ public class BookSearchActivity extends Activity {
     private ListView booksList;
     private List<Book> books=new ArrayList<Book>();
     private BookSearchAdapter bookSearchAdapter;
-    private CircularProgressView progressView;
-    private Thread updateThread;
+    //private CircularProgressView progressView;
+    private LoadingView progressView;
+    //private Thread updateThread;
 
     //填充数据
     private int city_index;
@@ -70,7 +72,8 @@ public class BookSearchActivity extends Activity {
         menu = (DropDownMenu) findViewById(R.id.choose_menu);
         setMenuSetting();
 
-        progressView = (CircularProgressView) findViewById(R.id.book_search_progress_view);
+        //progressView = (CircularProgressView) findViewById(R.id.book_search_progress_view);
+        progressView = (LoadingView) findViewById(R.id.book_search_progress_view);
 
         bookSearchAdapter = new BookSearchAdapter(BookSearchActivity.this, books);
         booksList.setAdapter(bookSearchAdapter);
@@ -227,7 +230,8 @@ public class BookSearchActivity extends Activity {
             public void onSearch(String searchTerm) {
                 //Toast.makeText(BookSearchActivity.this, searchTerm + " Searched", Toast.LENGTH_LONG).show();
                 //Toast.makeText(BookSearchActivity.this, "没有搜到对应的书籍", Toast.LENGTH_LONG).show();
-                startAnimationThreadStuff(100);
+                //startAnimationThreadStuff(100);
+                progressView.setVisibility(View.VISIBLE);
                 KeyboardUtils.closeKeyBoard(BookSearchActivity.this);
                 getRequestData(searchTerm);
             }
@@ -319,7 +323,7 @@ public class BookSearchActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void startAnimationThreadStuff(long delay)
+ /*   private void startAnimationThreadStuff(long delay)
     {
         if(updateThread != null && updateThread.isAlive())
             updateThread.interrupt();
@@ -346,5 +350,5 @@ public class BookSearchActivity extends Activity {
                 updateThread.start();
             }
         }, delay);
-    }
+    }*/
 }

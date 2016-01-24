@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:checkbox="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#F7F4F0"
     android:layout_width="match_parent"
@@ -31,11 +32,15 @@
             android:orientation="horizontal"
             android:layout_weight="5">
 
-            <CheckBox
+            <com.zeus.ui_user.view.AnimCheckBox
+                android:id="@+id/user_shopping_cart_all_check"
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
-                android:shadowColor="#999999"/>
+                android:shadowColor="#999999"
+                checkbox:stroke_width="3dp"
+                checkbox:stroke_color="#2196F3"
+                checkbox:circle_color="#1976D2"/>
 
             <TextView
                 android:layout_width="0dp"

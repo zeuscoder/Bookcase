@@ -18,10 +18,15 @@
         android:background="#ffffff"
         android:padding="5dp">
 
-        <CheckBox
+        <com.zeus.ui_user.view.AnimCheckBox
+            xmlns:checkbox="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/user_shopping_cart_check1"
             android:layout_width="30dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="5dp"/>
+            android:layout_marginRight="5dp"
+            checkbox:stroke_width="3dp"
+            checkbox:stroke_color="#2196F3"
+            checkbox:circle_color="#1976D2"/>
 
         <ImageView
             android:id="@+id/good_shop_icon"
@@ -54,10 +59,16 @@
         android:background="#FCFCFC"
         android:padding="5dp">
 
-        <CheckBox
+        <com.zeus.ui_user.view.AnimCheckBox
+            xmlns:checkbox="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/user_shopping_cart_check2"
             android:layout_width="30dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="5dp"/>
+            android:layout_marginRight="5dp"
+            android:layout_gravity="center_vertical"
+            checkbox:stroke_width="3dp"
+            checkbox:stroke_color="#2196F3"
+            checkbox:circle_color="#1976D2"/>
 
         <ImageView
             android:id="@+id/good_book_image"

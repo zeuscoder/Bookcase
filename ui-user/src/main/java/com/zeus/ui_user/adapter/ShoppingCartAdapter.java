@@ -11,11 +11,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zeus.ui_user.R;
+import com.zeus.ui_user.view.AnimCheckBox;
 
 /**
  * Created by zeus_coder on 2016/1/10.
  */
-public class ShoppingCartAdapter extends BaseAdapter{
+public class ShoppingCartAdapter extends BaseAdapter implements AnimCheckBox.OnCheckedChangeListener{
 
     private Context context;
 
@@ -53,6 +54,8 @@ public class ShoppingCartAdapter extends BaseAdapter{
             viewHolder.goodNewPrice = (TextView) view.findViewById(R.id.good_book_new_price);
             viewHolder.goodOldPrice = (TextView) view.findViewById(R.id.good_book_old_price);
             viewHolder.goodBookCount = (TextView) view.findViewById(R.id.good_book_count);
+            viewHolder.checkBox1 = (AnimCheckBox) view.findViewById(R.id.user_shopping_cart_check1);
+            viewHolder.checkBox2 = (AnimCheckBox) view.findViewById(R.id.user_shopping_cart_check2);
             view.setTag(viewHolder);
         } else {
             view = convertView;
@@ -70,7 +73,16 @@ public class ShoppingCartAdapter extends BaseAdapter{
                 context.startActivity(new Intent(context, BookPurchaseDetailActivity.class));
             }
         });*/
+        viewHolder.checkBox1.setChecked(false, false);
+        viewHolder.checkBox2.setChecked(false, false);
+        viewHolder.checkBox1.setOnCheckedChangeListener(this);
+        viewHolder.checkBox2.setOnCheckedChangeListener(this);
         return view;
+    }
+
+    @Override
+    public void onChange(boolean checked) {
+
     }
 
     class ViewHolder {
@@ -82,5 +94,7 @@ public class ShoppingCartAdapter extends BaseAdapter{
         private TextView goodNewPrice;
         private TextView goodOldPrice;
         private TextView goodBookCount;
+        private AnimCheckBox checkBox1;
+        private AnimCheckBox checkBox2;
     }
 }

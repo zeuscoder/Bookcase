@@ -22,4 +22,8 @@
     <fraction name="item_max_mask_alpha">35%</fraction>
     <fraction name="item_normal_mask_alpha">65%</fraction>
 
+    <!-- 书库Menu -->
+    <dimen name="cl_title_trans">40dp</dimen>
+    <dimen name="cl_title_size">20sp</dimen>
+
 </resources>

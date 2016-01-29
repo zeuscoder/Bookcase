@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 书库Menu -->
+    <item name="view0" type="id" />
+    <item name="view1" type="id" />
+    <item name="view2" type="id" />
+    <item name="view3" type="id" />
+    <item name="view4" type="id" />
+    <item name="case_book_menu_icon" type="id" />
+    <item name="case_book_menu_title" type="id" />
+
+</resources>

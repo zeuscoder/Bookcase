@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.zeus.ui_case.activity.BookCaseMenuActivity;
 import com.zeus.ui_case.activity.BookLibraryActivity;
 import com.zeus.ui_case.activity.FilmRoomActivity;
 import com.zeus.ui_case.activity.MusicCardActivity;
@@ -38,7 +39,8 @@ public class CaseFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //startActivity(new Intent(getActivity(), DetailActivity.class));
-                startActivity(new Intent(getActivity(), BookLibraryActivity.class));
+                //startActivity(new Intent(getActivity(), BookLibraryActivity.class));
+                startActivity(new Intent(getActivity(), BookCaseMenuActivity.class));
             }
         });
         musicStore.setOnClickListener(new View.OnClickListener() {

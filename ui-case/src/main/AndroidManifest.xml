@@ -8,6 +8,7 @@
         <activity android:name=".activity.MusicCardActivity"/>
         <activity android:name=".activity.BookLibraryActivity"/>
         <activity android:name=".activity.FilmRoomActivity"/>
+        <activity android:name=".activity.BookCaseMenuActivity"/>
     </application>
 
 </manifest>

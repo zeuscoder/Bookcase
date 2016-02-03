@@ -19,7 +19,9 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <include layout="@layout/app_layout_puechase_detail"/>
+
+<!--                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="230dp"
                     android:background="@color/guillotine_background_dark"
@@ -81,7 +83,7 @@
                         android:textSize="20sp"
                         android:textColor="#666"/>
 
-                </LinearLayout>
+                </LinearLayout>-->
 
             </LinearLayout>
 

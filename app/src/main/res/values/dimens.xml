@@ -52,4 +52,6 @@
     <dimen name="text_26">26sp</dimen>
     <dimen name="text_16">16sp</dimen>
 
+    <dimen name="parallax_image_height">180dp</dimen>
+
 </resources>
